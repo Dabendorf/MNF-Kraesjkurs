@@ -1,0 +1,99 @@
+\documentclass[aspectratio=169,fleqn,xcolor={dvipsnames}]{beamer}
+\usetheme[pageofpages=of]{hubln}
+% dette dokumentet er hoveddokumentet og må kompileres
+% resten skjer i Preamble.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tabularx}
+\usepackage{hhline}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{minted,xcolor}
+\usemintedstyle{monokai} %vs
+%\definecolor{bg}{HTML}{282828}
+\definecolor{bg}{RGB}{40, 40, 40}
+\setminted{bgcolor=black,frame=lines,
+               framesep=2mm}
+\usefonttheme{professionalfonts}
+\setbeamercovered{invisible}
+\hfuzz=8.64pt % Antioverfullbox-inator
+
+\setbeamercolor{block body alerted}{bg=alerted text.fg!10}
+\setbeamercolor{block title alerted}{bg=alerted text.fg!20}
+\setbeamercolor{block body}{bg=structure!10}
+\setbeamercolor{block title}{bg=structure!20}
+\setbeamercolor{block body example}{bg=green!10}
+\setbeamercolor{block title example}{bg=green!20}
+\setbeamertemplate{blocks}[rounded][shadow]
+
+
+% Eksempel for en graph - Start
+\newcommand{\myGraph}{%
+  \begin{tikzpicture}[node distance=1.45cm, thick,
+                      main node/.style={circle, draw, font=\sffamily\bfseries}]
+  
+    \node[main node] (1)                    {1};
+    \node[main node] (3) [below left  of=1] {3};
+    \node[main node] (4) [below right of=1] {4};
+    \node[main node] (2) [above right of=4] {2};
+    \node[main node] (5) [below right of=2] {5};
+    \node[main node] (6) [below left  of=5] {6};
+
+    \path
+    (1) edge (2)
+    (1) edge (3)
+    (1) edge (4)
+    (2) edge (4)
+    (2) edge (5)
+    (2) edge (6)
+    (3) edge (4)
+    (3) edge (6)
+    (5) edge (6);
+  \end{tikzpicture}
+}
+
+\newcommand{\myGraphCorrect}{
+  \begin{tikzpicture}[node distance=1.45cm, thick,
+                      main node/.style={circle, draw, font=\sffamily\bfseries}]
+
+    \node[main node] (1)                    {1};
+    \node[main node] (3) [below left  of=1] {3};
+    \node[main node] (4) [below right of=1] {4};
+    \node[main node] (2) [above right of=4] {2};
+    \node[main node] (5) [below right of=2] {5};
+    \node[main node] (6) [below left  of=5] {6};
+    \draw[red,thick,dashed] (1.5,-2.3) -- (1.5,0.3);
+
+    \path
+    (1) edge (2)
+    (1) edge (3)
+    (1) edge (4)
+    (2) edge (4)
+    (2) edge (5)
+    (2) edge (6)
+    (3) edge (4)
+    (3) edge (6)
+    (5) edge (6);
+  \end{tikzpicture}
+}
+
+% Eksempel for en graph - Slutt
+
+\newcommand{\newLine}{%
+  \hfill\break
+}
+
+% Hier die Daten zur Präsentation eintragen
+\author[ls]{Steinar Simonnes og Lukas Schramm}
+\title[sgp]{Kræsjkurs MAT262}
+\institute{Institutt for informatikk \\ Universitetet i Bergen}
+\date[23.05.22]{23 Mai 2022}
+
+\begin{document}
+  \input{Presentation}
+\end{document}
