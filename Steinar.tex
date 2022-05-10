@@ -40,8 +40,8 @@ F & T \\ \hline
     \end{itemize}
     \begin{block}{Eksempel}
         La $p$ := Jorden er flat, og $q$ := Månen er flat\\
-        $p \lor q$ = Jorden er flat \bold{eller} månen er flat\\
-        $p \land q$ = Jorden er flat \bold{og} månen er flat\\
+        $p \lor q$ = Jorden er flat \textbf{eller} månen er flat\\
+        $p \land q$ = Jorden er flat \textbf{og} månen er flat\\
     \end{block}
     \begin{tabular}{c|c|c|c}
         $p$ & $q$ & $p \lor q$ & $p \land q$ \\ \hline
@@ -90,7 +90,7 @@ F & T \\ \hline
 
 \begin{frame}{Noen viktige logiske ekvivalenser}
     \begin{columns}
-    \begin{column}{0.48\textwidth}
+    \begin{column}{0.33\textwidth}
         \begin{tabular}{l|c}
         Ekvivalens & Navn \\ \hline
         $p \land T \equiv p$ & Identity\\
@@ -164,7 +164,7 @@ F & T \\ \hline
 \begin{frame}{Typisk logikkoppgave}
     \begin{columns}
     \begin{column}{0.48\textwidth}
-        Vis at $(p \land \lnot q) \rightarrow \lnot r$ og $(p \land q) \rightarrow q$ er logisk ekvivalente, ved å bruke enkle logiske ekvivalenser.\\ \\
+        Vis at $(p \land \lnot q) \rightarrow \lnot r$ og $(p \land q) \rightarrow q$ er logisk ekvivalente, ved å bruke enkle logiske ekvivalenser.\\
         
         1. $a \rightarrow b \equiv \lnot a \lor b$ \\
         2. $\lnot (a \land b) \equiv \lnot a \lor \lnot b$\\
@@ -179,7 +179,7 @@ F & T \\ \hline
             \equiv \lnot p \lor q \lnot r \\
             \equiv \lnot p \lor \lnot r \lor q \\
             \equiv \lnot (p \land r) \lor q \\
-            \equiv (p \land r) \rightarrow q\\
+            \equiv (p \land r) \rightarrow q
             \qed
         \end{math}
     \end{column}
@@ -193,7 +193,7 @@ F & T \\ \hline
     \end{itemize}
     \begin{block}{Eksempler på predikater}
         $P(x, y, z) = x + y < z$\\
-        $Q(s)$ = $s$ contains $'a'$\\ \\
+        $Q(s)$ = $s$ contains $'a'$
     \end{block}
     \begin{block}{Eksempler på evaluering}
         $P(1, 2, 3) = 1 + 2 < 3 = 3 < 3 = F$ \\ 
@@ -210,7 +210,7 @@ F & T \\ \hline
     \end{itemize}
     
     \begin{block}{Eksempler}
-        $\forall x (x < x + 1)$ = "For alle x er det sant at $x < x +1$"\\\\
+        $\forall x (x < x + 1)$ = "For alle x er det sant at $x < x +1$"\\[5mm]
         $\exists x (x > x^2)$ = "Det eksisterer en x slik at det er sant at $x > x^2$"
     \end{block}
 \end{frame}

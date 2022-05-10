@@ -1,23 +1,160 @@
 \section{Tallteori}
+\subsection*{Div og mod}
 \begin{frame}{Divisjon og Modulær aritmetikk}
 \begin{block}{Delelighet $a|b$ ($a$ deler $b$)}
 \begin{itemize}
 \item $a$ kan dele $b$ uten rest
-\item $a|b$ er det samme som $\frac{b}{a}=c$ eller $b=a\cdot c$ med $c$ som heltall
+\item $a|b$ er det samme som $\frac{b}{a}=c$ eller $b=a\cdot c$ med $c$ som heltall\\
+Eksempel: $3|12$ eller $\frac{12}{3} = 4$ eller $12=3\cdot 4$
+\end{itemize}
+\end{block}
+
+\begin{block}{Modulo (Klokkearitmetikk)}
+\begin{itemize}
+\item $a\, mod\, b$ gir ut resten av heltall divisjon av $\frac{a}{b}$ ($a\%b$ i programmeringsspråk)
+\item $a\, mod\, b\, =\, r$ kalles \textit{remainder}\\
+Eksempel: $17\, mod\, 5\, = 2$ fordi $17=3\cdot 5+2$ 
 \end{itemize}
 \end{block}
 \end{frame}
 
+\begin{frame}[fragile]{Algoritme for divisjon /modulo}
+\begin{itemize}
+\item $d=q\cdot a + r$ med
+\item $q=\floor*{\frac{d}{a}}$ og $r=d\, mod\, a$
+\item Eksempel: $q=\floor*{\frac{17}{5}} = \floor*{3,4}=3$
+\item $17=3\cdot 5 + r$ $\iff$ $17=15+r$ $\iff$ $r=2$
+\end{itemize}
+\begin{minted}{python}
+def rest(d, a):              # d = 17, a = 5
+   q = floor(d/a)            # q = floor(17/5 = 3
+   r = d-q*a                 # r = 17-3*5 = 2
+   print(f"{d}={q}*{a}+{r}")   # 17 = 3*5+2
+   # r=d\%a kan også brukes
+   
+\end{minted}
+\end{frame}
+
+\begin{frame}{Modulo regneregler}
+\begin{block}{Kongruens $\equiv$}
+\begin{itemize}
+\item $a \equiv b\, (mod\, m)$: a og b kongruent i forhold til mod m
+\item $a \equiv b\, (mod\, m)$ betyr $a\, mod\, m=b\, mod\, m$
+\item Eksempel: $8\, \equiv 3\, (mod\, 5)$ betyr $8\, mod\, 5=3=3\, mod\, 5$ 
+\end{itemize}
+\end{block}
+
+\begin{itemize}
+\item Addisjon: $(a+b)\, mod\, m = (a\,mod\, \,m + b\, mod\, m)\, mod\, m$
+\item $(8+21)\, mod\, 6 = (8\,mod\, \,6 + 21\, mod\, 6)\, mod\, 6$
+\item Multiplikasjon: $(a\cdot b)\, mod\, m = (a\,mod\, \,m \cdot b\, mod\, m)\, mod\, m$
+\item $(8\cdot21)\, mod\, 6 = (8\,mod\, \,6 \cdot 21\, mod\, 6)\, mod\, 6$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\begin{exampleblock}{Eksempel}
+\begin{itemize}
+\item $x \equiv 3\,(mod\, 5)$
+\item $y \equiv 4\,(mod\, 5)$
+\item Finn løsningen: $(57\cdot x^3)\, mod\,5$
+\end{itemize}
+\end{exampleblock}
+\medskip
+
+$x \equiv 3\,(mod\, 5)$ $\rightarrow x=3$\\
+$(57\cdot x^3)\, mod\,5=(57\, mod\, 5)\cdot (x\, mod\, 5)\cdot (x\, mod\, 5)\cdot (x\, mod\, 5)\, mod\, 5$\\
+$=(57\, mod\, 5)\cdot (3\, mod\, 5)\cdot (3\, mod\, 5)\cdot (3\, mod\, 5)\, mod\, 5$\\
+$=(2\cdot 3\cdot 3\cdot 3)\, mod\, 5=54\, mod\, 5=4$
+\end{frame}
+
+\begin{frame}{}
+\begin{exampleblock}{Eksempel}
+\begin{itemize}
+\item $x \equiv 3\,(mod\, 5)$
+\item $y \equiv 4\,(mod\, 5)$
+\item Finn løsningen: $(3\cdot x+2\cdot y^2)\, mod\,5$
+\end{itemize}
+\end{exampleblock}
+\medskip
+
+$x \equiv 3\,(mod\, 5)$ $\rightarrow x=3$\\
+$y \equiv 4\,(mod\, 5)$ $\rightarrow y=4$\\
+$(3\cdot x)\, mod\, 5 = (3\, mod\, 5)\cdot (x\, mod\, 5)\, mod\, 5=(3\, mod\, 5)\cdot (3\, mod\, 5)\, mod\, 5=9\, mod\, 5=4$\\
+$(2\cdot y^2)\, mod\, 5 = (2\, mod\, 5)\cdot (y\, mod\, 5)\cdot (y\, mod\, 5)\, mod\, 5 = (2\, mod\, 5)\cdot (4\, mod\, 5)\cdot (4\, mod\, 5)\, mod\, 5=(2\cdot 4\cdot 4)\, mod\, 5=32\, mod\, 5=2$\\
+$(3\cdot x+2\cdot y^2)\, mod\,5=((3\cdot x)\, mod\, 5+ (2\cdot y^2))\, mod\, 5=(4+2)\, mod\, 5=6\, mod\, 5=1$
+\end{frame}
+
+\subsection*{Tallsystem}
 \begin{frame}
-Integer representasjon
+\begin{block}{Tallsystem}
+En representasjon av tall med forskjellige tegner med en base
+\end{block}
+\medskip
+
+\begin{table}[]
+\centering
+\label{tab:tallsystemer}
+\begin{tabular}{l|l|l|l|l}
+Navn & Tall & 5 & 11 & 34 \\ \hline
+Desimal (b=10) & 0-9 & 5& 11 & 34 \\
+Binær (b=2) & 0-1 & 101 & 1011 & 100010 \\
+Octal (b=8) & 0-7 & 5&  13 & 42\\
+Hexadesimal (b=16) & 0-9,a-f& 5& D& 22\\
+base=13 & 0-9,a-c & 5& B& 28
+\end{tabular}
+\caption{Eksempler på forskjellige tallsystemer}
+\end{table}
 \end{frame}
 
 \begin{frame}
-Primes and greatest common divisors
+Konvertering av baser i tallsystem
+\end{frame}
+
+\subsection*{Primtall, Greatest common divisor, Least common multiple}
+\begin{frame}
+\begin{block}{Primtall}
+Et tall som bare kan deles av seg selv og 1\\
+Eksempler: 2,3,5,7,11,13,...
+\end{block}
+
+\begin{block}{Greatest common divisor (største felles faktor)}
+$gcd(a,b) := $det største tallet som deler både a og b\\
+Eksempel: $gcd(4,6)=2$\\
+Co-prime: a og b er co-prime dersom $gcd(a,b)=1$
+\end{block}
+
+\begin{block}{Least common multiple}
+$lcm(a,b) := $ det minste tallet som kan deles av både a og b\\
+Eksempel: $lcm(4,6)=12$\\
+hvis $gcd(a,b) = 1$ $\rightarrow lcm(a,b) = a\cdot b$
+\end{block}
+\end{frame}
+
+\subsection*{Euklids algoritme}
+\begin{frame}[fragile]
+\begin{minted}{python}
+def gcd(a, b):
+    while b > 0:
+        q = a//b        # quotient
+        r = a-q*b       # resten
+        a = b
+        b = r
+    return a
+\end{minted}
+\begin{table}
+\begin{tabular}{l|l|l|l|l}
+a & b & q & r \\ \hline
+28 & 12 & 2 & 4\\
+12 & 4 & 3 & 0\\
+4 & 0 &  & 
+\end{tabular}
+\caption{Eksempel for $gcd(28,12)$}
+\end{table}
 \end{frame}
 
 \begin{frame}
-Solving Congruences
+Extended Euclidean algorithm
 \end{frame}
 
 % ==========================0
