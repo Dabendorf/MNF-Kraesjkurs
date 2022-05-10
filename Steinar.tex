@@ -1,0 +1,275 @@
+
+\section{Logikk}
+\begin{frame}{Proposisjoner}
+\begin{itemize}
+    \item En proposisjon er et uttrykk med en sannhetsverdi, som alltid er enten Sann (T) elller Usann (F).
+    \item Ofte setter vi dem i variabler, for å gjøre det lettere å lese.
+\end{itemize}
+\begin{block}{Proposisjoner}
+    p := 2 < 3 \\
+    q := "Månen er laget av ost"\\
+    r := "MNF130 er et nyttig fag for informatikere"
+\end{block}
+\begin{block}{Ikke proposisjoner}
+    "Hva skal vi ha til middag i dag?"\\
+    x + y < z
+\end{block}
+\end{frame}
+
+\begin{frame}{$\lnot$, og sannhetstabeller}
+\begin{itemize}
+    \item Gitt en proposisjon $p$, kan vi representere den motsatte proposisjonen som $\lnot p$.
+    \item Vi kan tegne opp alle mulige verdier et slikt uttrykk kan ha i en tabell.
+\end{itemize}
+
+\begin{block}
+    La $p := 2 < 3$. \\
+    $p$ = "Det er sant at 2 er mindre enn 3" \\
+    $\lnot p$ = "Det er ikke sant at 2 er mindre enn 3"
+\end{block}
+\begin{tabular}{c|c}
+$p$ & $\lnot p$ \\ \hline
+T & F \\
+F & T \\ \hline
+\end{tabular}
+\end{frame}
+
+\begin{frame}{$\lor$ og $\land$}
+    \begin{itemize}
+        \item Vi kan slå sammen flere proposisjoner til et større uttrykk på mange forskjellige måter.
+    \end{itemize}
+    \begin{block}{Eksempel}
+        La $p$ := Jorden er flat, og $q$ := Månen er flat\\
+        $p \lor q$ = Jorden er flat \bold{eller} månen er flat\\
+        $p \land q$ = Jorden er flat \bold{og} månen er flat\\
+    \end{block}
+    \begin{tabular}{c|c|c|c}
+        $p$ & $q$ & $p \lor q$ & $p \land q$ \\ \hline
+        T & T & T & T \\
+        T & F & T & F \\
+        F & T & T & F \\
+        F & F & F & F \\
+    \end{tabular}
+\end{frame}
+
+\begin{frame}{$\rightarrow$ og $\leftrightarrow$}
+    \begin{itemize}
+        \item En proposisjon kan implisere en annen proposisjon.
+    \end{itemize}
+    \begin{block}{Eksempel}
+        La $p$ := "Det regner ute", og $q$ := "Bakken er våt"\\
+        $p \rightarrow q$ = "Hvis det regner ute, blir bakken våt"\\
+        $p \leftrightarrow q$ = "Det regnet ute hvis og bare hvis bakken er våt"
+    \end{block}
+    \begin{tabular}{c|c|c|c}
+        $p$ & $q$ & $p \rightarrow q$ & $p \leftrightarrow q$ \\ \hline
+        T & T & T & T \\
+        T & F & F & F \\
+        F & T & T & F \\
+        F & F & T & T \\
+    \end{tabular}
+\end{frame}
+
+\begin{frame}{Ekvivalenser og tautologier}
+    \begin{itemize}
+        \item Når to logiske uttrykk alltid har samme verdi, sier vi at de er \emph{logisk ekvivalente}.
+        \item Om et uttrykk alltid er sant, uavhengig av innholdet, kaller vi det en tautologi.
+    \end{itemize}
+    \begin{tabular}{c|c|c|c}
+         $p$ & $\lnot p$ & $\lnot \lnot p$ & $p \lor \lnot p$\\ \hline
+         T & F & T & T\\
+         F & T & F & T
+    \end{tabular}
+    \begin{itemize}
+        \item Konklusjon 1: $p \equiv \lnot \lnot p$
+        \item Konklusjon 2: $p \lor \lnot p \equiv T$, og er en tautologi
+        \item For å se om to uttrykk er ekvivalente, tegn sannhetstabellen og se om kollonene deres er det samme.
+        \item For å se om et uttrykk er en tautologi, tegn sannhetstabellen og se om kolonnen alltid er T.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Noen viktige logiske ekvivalenser}
+    \begin{columns}
+    \begin{column}{0.48\textwidth}
+        \begin{tabular}{l|c}
+        Ekvivalens & Navn \\ \hline
+        $p \land T \equiv p$ & Identity\\
+        $p \lor F \equiv p$ \\ \hline
+        
+        $p \lor T \equiv T$ & Domination\\
+        $p \land F \equiv F$\\ \hline
+        
+        $p \lor p \equiv p$ & Idempotent\\
+        $p \land p \equiv p$ \\ \hline
+        
+        $p \equiv \lnot \lnot p$ & Negation\\ \hline
+        
+        $p \lor q \equiv q \lor p$ & Commutative\\
+        $p \land q \equiv q \land p$ \\
+        
+
+    \end{tabular}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+        \begin{tabular}{l|c}
+        Ekvivalens & Navn \\ \hline
+        
+        $(p \lor q) \lor r \equiv p \lor (q \lor r)$ & Associative\\
+        $(p \land q) \land r \equiv p \land (q \land r)$ \\ \hline
+        
+        $p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$ & Distributive\\
+        $p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$ \\ \hline
+        
+        $\lnot (p \land q) \equiv \lnot p \lor \lnot q$ & De Morgan \\
+        $\lnot (p \lor q) \equiv \lnot p \land \lnot q$ \\ \hline
+        
+        $p \lor (p \land q) \equiv p$ & Absorption \\
+        $p \land (p \lor q) \equiv q$ \\ \hline
+        
+        $p \lor \lnot p \equiv T$ & Negation \\
+        $p \land \lnot p \equiv F$ \\
+        \end{tabular}
+    \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Flere viktige logiske ekvivalenser}
+    \begin{columns}
+    \begin{column}{0.48\textwidth}
+        \begin{tabular}{c}
+            Ekvivalenser med $\rightarrow$ \\ \hline
+            $p \rightarrow q \equiv \lnot p \lor q$ \\
+            $p \rightarrow q \equiv \lnot p \rightarrow \lnot q$ \\
+            $p \lor q \equiv \lnot p \rightarrow q$ \\
+            $p \land q \equiv \lnot (p \rightarrow \lnot q)$ \\
+            $\lnot (p \rightarrow q) \equiv p \land \lnot q$ \\
+            $(p \rightarrow q) \land (p \rightarrow r) \equiv p \rightarrow (q \land r)$ \\
+            $(p \rightarrow q) \land (q \rightarrow r) \equiv (p \lor q) \rightarrow r$ \\
+            $(p \rightarrow q) \lor (p \rightarrow r) \equiv p \rightarrow (q \lor v)$ \\
+            $(p \rightarrow r) \lor (q \rightarrow r) \equiv (p \land q) \rightarrow r$
+        \end{tabular}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+        \begin{tabular}{c}
+            Ekvivalenser med $\leftrightarrow$ \\ \hline
+            $p \leftrightarrow q \equiv p \rightarrow q \land q \rightarrow p$ \\
+            $p \leftrightarrow q \equiv \lnot p \leftrightarrow \lnot q$ \\
+            $p \leftrightarrow q \equiv (p \land q) \lor (\lnot p \land \lnot q)$\\
+            $\lnot (p \leftrightarrow q) \equiv p \rightarrow \lnot q$
+        \end{tabular}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Typisk logikkoppgave}
+    \begin{columns}
+    \begin{column}{0.48\textwidth}
+        Vis at $(p \land \lnot q) \rightarrow \lnot r$ og $(p \land q) \rightarrow q$ er logisk ekvivalente, ved å bruke enkle logiske ekvivalenser.\\ \\
+        
+        1. $a \rightarrow b \equiv \lnot a \lor b$ \\
+        2. $\lnot (a \land b) \equiv \lnot a \lor \lnot b$\\
+        3. $\lnot (\lnot a) \equiv a$
+    \end{column}
+    \begin{column}{0.48\textwidth}
+        \begin{math}
+            (p \land q) \rightarrow \lnot r \\
+            \equiv \lnot (p \land \lnot q) \lor \lnot r \\
+            \equiv (\lnot p \lor \lnot \lnot q) \lnot r \\
+            \equiv (\lnot p \lor q) \lnot r \\
+            \equiv \lnot p \lor q \lnot r \\
+            \equiv \lnot p \lor \lnot r \lor q \\
+            \equiv \lnot (p \land r) \lor q \\
+            \equiv (p \land r) \rightarrow q\\
+            \qed
+        \end{math}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Predikater}
+    \begin{itemize}
+        \item Et predikat er bare en funksjon som returnerer T eller F.
+        \item Gitt et predikat og riktig antall argumenter, kan vi evaluere det som en vanlig proposisjon.
+    \end{itemize}
+    \begin{block}{Eksempler på predikater}
+        $P(x, y, z) = x + y < z$\\
+        $Q(s)$ = $s$ contains $'a'$\\ \\
+    \end{block}
+    \begin{block}{Eksempler på evaluering}
+        $P(1, 2, 3) = 1 + 2 < 3 = 3 < 3 = F$ \\ 
+        $Q("Steinar") = "Steinar"$ contains $'a' = T$
+    \end{block}
+
+\end{frame}
+
+\begin{frame}{Kvantorer (/Quantifiers)}
+    \begin{itemize}
+        \item Ofte vil vi si noe om et predikat $P(x)$, men for flere potensielle $x$ samtidig.
+        \item $\forall x P(x)$ = "For alle $x$ er det sant at $P(x)$"
+        \item $\exists x P(x)$ = "Det eksisterer en $x$ slik at det er sant at $P(x)$"
+    \end{itemize}
+    
+    \begin{block}{Eksempler}
+        $\forall x (x < x + 1)$ = "For alle x er det sant at $x < x +1$"\\\\
+        $\exists x (x > x^2)$ = "Det eksisterer en x slik at det er sant at $x > x^2$"
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Kvantorer i praksis}
+    \begin{minted}[fontsize=\scriptsize]{python}
+def forall(p, xs):
+    for x in xs:
+        if not p(x):
+            return False
+    return True
+    
+def exists(p, xs):
+    for x in xs:
+        if p(x):
+            return True
+    return False
+    \end{minted}
+    
+    \begin{itemize}
+        \item exists(p, xs) = $\exists x (x \in xs \land p(x))$
+        \item forall(p, xs) = $\forall x (x \in xs \land p(x))$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Nøstede kvantorer (/Nested quantifiers)}
+    \begin{itemize}
+        \item Ofte vil vi si noe om mange kombinasjoner av variabler samtidig.
+        \item Da slå vi sammen flere $\forall$ og $\exists$.
+    \end{itemize}
+    
+    \begin{block}{Eksempler}
+        $\forall x \forall y ()$
+    \end{block}
+\end{frame}
+
+\section{Bevis}
+
+\subsection{Induksjon}
+\begin{frame}
+TODO: Fill with content @Steinar 
+\end{frame}
+
+\section{Mengdelære}
+\begin{frame}
+TODO: Fill with content @Steinar 
+\end{frame}
+
+\section{Funksjoner}
+\begin{frame}
+TODO: Fill with content @Steinar 
+\end{frame}
+
+\subsection{Relasjoner}
+\begin{frame}
+TODO: Fill with content @Steinar 
+\end{frame}
+
+\section{Sekvenser/Rekker}
+\begin{frame}
+TODO: Fill with content @Steinar 
+\end{frame}
