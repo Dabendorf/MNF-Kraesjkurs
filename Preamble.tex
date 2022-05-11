@@ -5,19 +5,25 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage[norsk]{babel}
 \usepackage{tabularx}
 \usepackage{hhline}
 \usepackage{array}
 \usepackage{tikz}
+\usepackage{tikz-cd}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{tikz-cd}
 \usepackage{mathtools}
 \usepackage{cancel}
 \usepackage{multirow}
+\usepackage{comment}
 \usepackage{minted,xcolor}
 \usepackage{caption}
 \usepackage{subcaption}
+\usetikzlibrary{cd}
+\usetikzlibrary{babel}
+\usepackage{amssymb}
+\usepackage{csquotes}
 \usemintedstyle{monokai} %vs
 %\definecolor{bg}{HTML}{282828}
 \definecolor{bg}{RGB}{40, 40, 40}
@@ -44,7 +50,7 @@
   \hfill\break
 }
 
-\newcommand{\comment}[1]{}
+%\newcommand{\comment}[1]{}
 \tikzset{vertex/.style={draw, circle, inner sep=1mm}}
 \newcommand{\incomplete}[3][1.5cm]{\begin{tikzpicture}
 \foreach \n in {1,...,#2}{\node[vertex]at({90-360/#2*(\n-1)}:#1)(\n){\n};}

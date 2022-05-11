@@ -1,0 +1,163 @@
+\section{Tallteori}
+\subsection*{Div og mod}
+\begin{frame}{Divisjon og Modulær aritmetikk}
+\begin{block}{Delelighet $a|b$ ($a$ deler $b$)}
+\begin{itemize}
+\item $a$ kan dele $b$ uten rest
+\item $a|b$ er det samme som $\frac{b}{a}=c$ eller $b=a\cdot c$ med $c$ som heltall\\
+Eksempel: $3|12$ eller $\frac{12}{3} = 4$ eller $12=3\cdot 4$
+\end{itemize}
+\end{block}
+
+\begin{block}{Modulo (Klokkearitmetikk)}
+\begin{itemize}
+\item $a\, mod\, b$ gir ut resten av heltall divisjon av $\frac{a}{b}$ ($a\%b$ i programmeringsspråk)
+\item $a\, mod\, b\, =\, r$ kalles \textit{remainder}\\
+Eksempel: $17\, mod\, 5\, = 2$ fordi $17=3\cdot 5+2$ 
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Algoritme for divisjon /modulo}
+\begin{itemize}
+\item $d=q\cdot a + r$ med
+\item $q=\floor*{\frac{d}{a}}$ og $r=d\, mod\, a$
+\item Eksempel: $q=\floor*{\frac{17}{5}} = \floor*{3,4}=3$
+\item $17=3\cdot 5 + r$ $\iff$ $17=15+r$ $\iff$ $r=2$
+\end{itemize}
+\begin{minted}{python}
+def rest(d, a):              # d = 17, a = 5
+   q = floor(d/a)            # q = floor(17/5 = 3
+   r = d-q*a                 # r = 17-3*5 = 2
+   print(f"{d}={q}*{a}+{r}")   # 17 = 3*5+2
+   # r=d\%a kan også brukes
+   
+\end{minted}
+\end{frame}
+
+\begin{frame}{Modulo regneregler}
+\begin{block}{Kongruens $\equiv$}
+\begin{itemize}
+\item $a \equiv b\, (mod\, m)$: a og b kongruent i forhold til mod m
+\item $a \equiv b\, (mod\, m)$ betyr $a\, mod\, m=b\, mod\, m$
+\item Eksempel: $8\, \equiv 3\, (mod\, 5)$ betyr $8\, mod\, 5=3=3\, mod\, 5$ 
+\end{itemize}
+\end{block}
+
+\begin{itemize}
+\item Addisjon: $(a+b)\, mod\, m = (a\,mod\, \,m + b\, mod\, m)\, mod\, m$
+\item $(8+21)\, mod\, 6 = (8\,mod\, \,6 + 21\, mod\, 6)\, mod\, 6$
+\item Multiplikasjon: $(a\cdot b)\, mod\, m = (a\,mod\, \,m \cdot b\, mod\, m)\, mod\, m$
+\item $(8\cdot21)\, mod\, 6 = (8\,mod\, \,6 \cdot 21\, mod\, 6)\, mod\, 6$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\begin{exampleblock}{Eksempel}
+\begin{itemize}
+\item $x \equiv 3\,(mod\, 5)$
+\item $y \equiv 4\,(mod\, 5)$
+\item Finn løsningen: $(57\cdot x^3)\, mod\,5$
+\end{itemize}
+\end{exampleblock}
+\medskip
+
+$x \equiv 3\,(mod\, 5)$ $\rightarrow x=3$\\
+$(57\cdot x^3)\, mod\,5=(57\, mod\, 5)\cdot (x\, mod\, 5)\cdot (x\, mod\, 5)\cdot (x\, mod\, 5)\, mod\, 5$\\
+$=(57\, mod\, 5)\cdot (3\, mod\, 5)\cdot (3\, mod\, 5)\cdot (3\, mod\, 5)\, mod\, 5$\\
+$=(2\cdot 3\cdot 3\cdot 3)\, mod\, 5=54\, mod\, 5=4$
+\end{frame}
+
+\begin{frame}{}
+\begin{exampleblock}{Eksempel}
+\begin{itemize}
+\item $x \equiv 3\,(mod\, 5)$
+\item $y \equiv 4\,(mod\, 5)$
+\item Finn løsningen: $(3\cdot x+2\cdot y^2)\, mod\,5$
+\end{itemize}
+\end{exampleblock}
+\medskip
+
+$x \equiv 3\,(mod\, 5)$ $\rightarrow x=3$\\
+$y \equiv 4\,(mod\, 5)$ $\rightarrow y=4$\\
+$(3\cdot x)\, mod\, 5 = (3\, mod\, 5)\cdot (x\, mod\, 5)\, mod\, 5=(3\, mod\, 5)\cdot (3\, mod\, 5)\, mod\, 5=9\, mod\, 5=4$\\
+$(2\cdot y^2)\, mod\, 5 = (2\, mod\, 5)\cdot (y\, mod\, 5)\cdot (y\, mod\, 5)\, mod\, 5 = (2\, mod\, 5)\cdot (4\, mod\, 5)\cdot (4\, mod\, 5)\, mod\, 5=(2\cdot 4\cdot 4)\, mod\, 5=32\, mod\, 5=2$\\
+$(3\cdot x+2\cdot y^2)\, mod\,5=((3\cdot x)\, mod\, 5+ (2\cdot y^2))\, mod\, 5=(4+2)\, mod\, 5=6\, mod\, 5=1$
+\end{frame}
+
+\begin{frame}
+Integer representasjon
+\end{frame}
+
+\begin{frame}
+Primes and greatest common divisors
+\end{frame}
+
+\begin{frame}
+Solving Congruences
+\end{frame}
+
+% ==========================0
+
+\section{Kryptografi}
+\subsection*{Begrep}
+\begin{frame}{Symmetrisk og asymmetrisk kryptografi}
+\begin{block}{Symmetrisk kryptografi}
+\begin{itemize}
+\item Det finnes bare \textit{én} nøkkel, som begge personer bruker
+\item Brukes for både kryptering og dekryptering
+\item Eksempel: Caesar – $f(c) = (c+key) \% mod 26$
+\end{itemize}
+\end{block}
+\begin{block}{Asymmetrisk kryptografi}
+\begin{itemize}
+\item Hver person har \textit{to} nøkler: Privat og offentlig
+\item Kryptering med offentlig nøkkel av den andre personen
+\item Dekryptering med privat nøkkel
+\item Eksempel: RSA
+\end{itemize}
+\end{block}
+\end{frame}
+
+\subsection*{RSA}
+\begin{frame}{RSA}
+\begin{itemize}
+\item Asymmetrisk kryptering med to nøkler for hver deltaker
+\item Kryptering
+	\begin{itemize}
+	\item Offentlig nøkkel for kryptering
+	\item Privat nøkkel for dekryptering
+	\end{itemize}
+\item Digitale sertifikater /signaturer
+	\begin{itemize}
+	\item Privat nøkkel for signering
+	\item Offentlig nøkkel for verifisering
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+TODO: Fill with content @Lukas 
+RSA
+\end{frame}
+
+\section{Stokastisitet}
+\subsection{Counting}
+\begin{frame}
+TODO: Fill with content @Lukas 
+Basics of Counting
+Pigeonhole Principle
+Permutations and Combinations
+Binomial conefficients and identities
+\end{frame}
+
+\subsection{Sannsynligheter}
+\begin{frame}
+TODO: Fill with content @Lukas 
+Bayes theorem, probabilitiy theory
+discrete probability
+expected value and variance
+\end{frame}
+
+
