@@ -132,7 +132,9 @@ hvis $gcd(a,b) = 1$ $\rightarrow lcm(a,b) = a\cdot b$
 \end{frame}
 
 \subsection*{Euklids algoritme}
-\begin{frame}[fragile]
+\begin{frame}[fragile]{Euklids algoritme}
+\begin{columns}
+    \begin{column}{0.58\textwidth}
 \begin{minted}{python}
 def gcd(a, b):
     while b > 0:
@@ -142,6 +144,8 @@ def gcd(a, b):
         b = r
     return a
 \end{minted}
+ 	\end{column}
+    \begin{column}{0.38\textwidth}
 \begin{table}
 \begin{tabular}{l|l|l|l|l}
 a & b & q & r \\ \hline
@@ -151,10 +155,70 @@ a & b & q & r \\ \hline
 \end{tabular}
 \caption{Eksempel for $gcd(28,12)$}
 \end{table}
+ 	\end{column}
+\end{columns}
+
+
 \end{frame}
 
-\begin{frame}
-Extended Euclidean algorithm
+\begin{frame}[fragile]{}
+\begin{block}{Extended Euklids algoritme}
+Regner ut to parameter $s$ og $t$ slik at $gcd(a,b)$ kan skrives som linærkombinasjon\\
+$gcd(a,b)=s\cdot a+t\cdot b$\\
+$gcd(12,28)=4=-2\cdot 12 + 1\cdot 28$\medskip
+
+Kan brukes for å finne multiplikativ inverse\\
+Multiplikativ inverse finnes dersom $g(a,b)=1$
+\end{block}
+\begin{block}{Finne multiplicative inverse for $a$ med $mod\, m$}
+\begin{itemize}
+\item Funker bare dersom $gcd(a,m)=1$\\
+\item Regn ut linærkombinasjon $gcd(a,b)=s\cdot a+t\cdot b$ med gcd
+\item $a\cdot x \equiv 1 (mod\, m)$ er multiplicative inverse
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Extended Euklids algoritme}
+\begin{columns}
+    \begin{column}{0.58\textwidth}
+\begin{minted}{python}
+def gcdExtended(a, b):
+    if a == 0: 		# basis
+    	return b, 0, 1
+   
+    # rekursjon
+    gcd, x1, y1 = gcdExtended(b%a, a)
+    x = y1 - (b//a) * x1
+    y = x1
+    
+    return gcd, x, y
+\end{minted}
+ 	\end{column}
+    \begin{column}{0.38\textwidth}
+\begin{table}
+\begin{tabular}{l|l||l|l|l|l|l}
+\multicolumn{2}{c||}{Call} & \multicolumn{5}{c}{Rekursjon}\\ \hline
+a&b&gcd&x1&x2&x&y\\ \hline
+12&28&4&1&0&-2&1\\
+4&12&4&0&1&1&0\\
+0&4&4&0&1&&
+\end{tabular}
+\caption{Eksempel for $gcd(12,18)$}
+\end{table}
+ 	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Eksempel Multiplicate Inverse}
+\begin{itemize}
+\item Hva er multiplicative inverse av $5\, mod\, 13$?
+\item $gcd(a,m) = gcd(5,13)=1$ $\rightarrow$ har multiplicative inverse
+\item Linærkombinasjon fra gcd: $-5\cdot 5+13\cdot 2=1$
+\item $a = -5$
+\item Hvilket tall mellom 0 og 12 har samme kongruensklasse $mod\, 13?$ 
+\item $13-5=8$ er multiplicative inverse til 5 for $mod\, 13$
+\end{itemize}
 \end{frame}
 
 % ==========================0
@@ -188,7 +252,7 @@ Extended Euclidean algorithm
 	\item Offentlig nøkkel for kryptering
 	\item Privat nøkkel for dekryptering
 	\end{itemize}
-\item Digitale sertifikater /signaturer
+\item Digitale sertifikater/ signaturer
 	\begin{itemize}
 	\item Privat nøkkel for signering
 	\item Offentlig nøkkel for verifisering
@@ -197,9 +261,24 @@ Extended Euclidean algorithm
 \end{frame}
 
 
-\begin{frame}
-TODO: Fill with content @Lukas 
-RSA
+\begin{frame}{}
+\begin{table}
+\begin{tabular}{l|l}
+Instruksjon & Eksempel\\ \hline
+Velg to primtall $p$, $q$ & $p=7, q=13$\\
+Regn ut $n=p\cdot q$ & $7\cdot 13=91$\\
+Regn ut $\phi(n)=(p-1)\cdot(q-1)$&$\phi(n)=6\cdot12=72$\\
+Velg $e$ med $2<e<\phi(n)$ og $gcd(e,\phi(n))=1$&23, $gcd(72,23)=1$\\
+Finn $d=e^{-1} (mod\, \phi(n))$ med EEA & $d=23^{-1} (mod\, 72)$\\
+\indent\hspace{3mm} Lineærkombinasjon & $-25\cdot 23+8\cdot 72=1$\\
+& $a=-25$, $72-25=47$, $d=47$\\
+Kryptering av blokk M & $M=42$\\
+\indent\hspace{3mm} $C=M^e(mod\, n)$&$42^{23} (mod\, 91)=35$\\
+Dekryptering av blokk C & $C=35$\\
+\indent\hspace{3mm} $M=C^d(mod\, n)$&$35^{47} (mod\, 91)=42$
+\end{tabular}
+\caption{Hvordan brukes RSA?}
+\end{table}
 \end{frame}
 
 \section{Stokastisitet}
