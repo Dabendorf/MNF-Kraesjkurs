@@ -107,8 +107,72 @@ base=13 & 0-9,a-c & 5& B& 28
 \end{table}
 \end{frame}
 
-\begin{frame}
-Konvertering av baser i tallsystem
+\subsection*{Konvertering av tallsystem}
+\begin{frame}[fragile]{Desimal til base b}
+\begin{columns}
+    \begin{column}{0.68\textwidth}
+\begin{minted}[fontsize=\footnotesize]{python}
+def dec_to_base(n, b):
+   output = ""
+   while n != 0:
+      next_digit = n%b
+      n = n//b
+      output = str(next_digit) + output
+      print(f"n: {n}, bin: {next_digit}")
+   return output
+
+print(dec_to_base(22, 2))
+\end{minted}
+ 	\end{column}
+    \begin{column}{0.28\textwidth}
+\begin{table}
+\begin{tabular}{r|c|r}
+n & nextDigit & output \\ \hline
+22 & & 0 \\
+11 & 0 & 0\\
+5 & 1 & 10\\
+2 & 1 & 110\\
+1 & 0 & 0110\\
+0 & 1 & 10110
+\end{tabular}
+\caption{Eksempel for $dec\_to\_base(22, 2)$}
+\end{table}
+ 	\end{column}
+ 	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Base b til desimal}
+\begin{columns}
+    \begin{column}{0.68\textwidth}
+\begin{minted}[fontsize=\footnotesize]{python}
+def base_to_dec(n, b):
+   sum = 0; idx = 0
+   while n != 0:
+      to_add = (b**idx * (n%b))
+      sum += to_add
+      n = n // 10
+      idx += 1
+      print(f"Add: {to_add}, n: {n}, sum: {sum}")
+   return sum
+
+print(base_to_dec(10110, 2))
+\end{minted}
+ 	\end{column}
+    \begin{column}{0.28\textwidth}
+\begin{table}
+\begin{tabular}{r|r|r}
+toAdd & n & sum \\ \hline
+ & 10110 & 0\\
+0 & 1011 & 0\\
+2 & 101 & 2\\
+4 & 10 & 6\\
+0 & 1 & 6\\
+16 & 0 & 22
+\end{tabular}
+\caption{Eksempel for $base\_to\_dec(10110, 2)$}
+\end{table}
+ 	\end{column}
+ 	\end{columns}
 \end{frame}
 
 \subsection*{Primtall, Greatest common divisor, Least common multiple}
@@ -280,23 +344,3 @@ Dekryptering av blokk C & $C=35$\\
 \caption{Hvordan brukes RSA?}
 \end{table}
 \end{frame}
-
-\section{Stokastisitet}
-\subsection{Counting}
-\begin{frame}
-TODO: Fill with content @Lukas 
-Basics of Counting
-Pigeonhole Principle
-Permutations and Combinations
-Binomial conefficients and identities
-\end{frame}
-
-\subsection{Sannsynligheter}
-\begin{frame}
-TODO: Fill with content @Lukas 
-Bayes theorem, probabilitiy theory
-discrete probability
-expected value and variance
-\end{frame}
-
-
