@@ -87,8 +87,8 @@
 	\begin{itemize}
 	\item Permutasjon uten repetisjon: $n!$
 	\item Permutasjon med repetisjon: $\frac{n!}{r!\cdot s!\cdot t!}$
-	\item Kombinasjon uten repetisjon: ${n \choose k}$
-	\item Kombinasjon med repetisjon: $ {(n+k-1) \choose k}$
+	\item Kombinasjon uten repetisjon: $\binom{n}{k}$
+	\item Kombinasjon med repetisjon: $ \binom{(n+k-1)}{k}$
 	\item Variasjon uten repetisjon: $\frac{n!}{(n-k)!}$
 	\item Variasjon med repetisjon: $n^k$
 	\end{itemize}
@@ -118,7 +118,7 @@
 \begin{itemize}
 \item Det er 7 personer og 3 tilfeldige av dem skal få en pris. Hvor mange kombinasjoner finnes det?
 \item Ikke alle elementer blir med, ingen repetisjon, rekkefølgen ikke viktig 
-\item Kombinasjon uten repetisjon: ${n \choose k}={7 \choose 3}=\frac{7!}{3!\cdot 4!}=35$
+\item Kombinasjon uten repetisjon: $\binom{n}{k}=\binom{7}{3}=\frac{7!}{3!\cdot 4!}=35$
 \end{itemize}
 \end{block}
 
@@ -142,11 +142,121 @@
 \end{frame}
 
 \subsection{Sannsynligheter}
-\begin{frame}
-TODO: Fill with content @Lukas 
-Bayes theorem, probabilitiy theory
-discrete probability
-expected value and variance
+\begin{frame}{Definisjoner}
+\begin{itemize}
+\item \textbf{Utfallsrom: }Alle mengder som har en sannsynlighet
+\item \textbf{S: }Alle mulige utfall
+\item \textbf{E: }Alle ønskete utfall
+\item $E \subseteq S$: alle ønskete utfall er en del av alle mulige utfall
+\item \textbf{Sannsynlighet: }$P(E)=\frac{|E|}{|S|}$
+\item $0 \leq P(E) \leq 1$
+\item $P(S)=1$
+\item $P(\overline{E})=1-P(E)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Regneregler}
+\begin{itemize}
+\item $P(A\cup B)=P(A)+P(B)-P(A\cap B)$ (tilsvarer subtraction rule)
+\item $P(A\cap B)=P(A)\cdot P(B)$ hvis A,B statistisk uavhengig (tilsvarer multiplication rule)
+\item $\sum_{s\in S} P(s) = 1 $ (summen av alle ting som kan skje har sannsynlighet 1)
+\item \textbf{Betinget sannsynlighet: }$P(A|B)=\frac{P(A\cap B)}{P(B)}$ (Sannsynlighet av A etter at B skjedde)
+\item \textbf{Bayes Rule: }$P(A|B)=\frac{P(B|A)\cdot P(A)}{P(B)}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Eksempler}
+\begin{block}{Terninger}
+\begin{itemize}
+\item Det er to terninger, den ene er vanlig med 6 jevne sider
+\item Den andre har tallene $\{3,4,5,5,6,6\}$
+\item Hvor stor er sannsynligheten at vi kaster en 7 med begge terninger?
+\item Det er $6\cdot 6$ mulige kombinasjoner
+\item Det er fire måter å få det til:
+\begin{itemize}
+\item Terning 1: 1, Terning 2: 6 (finnes to ganger)
+\item Terning 1: 2, Terning 2: 5 (finnes to ganger)
+\item Terning 1: 3, Terning 2: 4
+\item Terning 1: 4, Terning 2: 3
+\end{itemize}
+\item $P(sum=7)=\frac{6}{36}=\frac{1}{6}$
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Eksempler}
+\begin{block}{Kortspill}
+\begin{itemize}
+\item Vi har et vanlig kortspill med 32 kort (4 farger, $\{7,8,9,10,J,Q,K,A\}$)
+\item Hva er sannsynligheten at vi trekker et hjerte eller en konge?
+\item Hva er sannsynligheten at en av disse kortene er 7,8 eller 9?
+\item Det er 4 konger, 8 hjerter, en av dem er begge deler
+\item $P(Konge\cup Hjerte)=\frac{8+4-1}{32}=\frac{11}{32}$
+\item Blant disse er det 3 kort som er 7,8 eller 9
+\item $P(7,8,9|Konge\cup Hjerte)=P((7,8,9)\cap(Konge\cup Hjerte))=\frac{3}{11}$
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{\textit{Vierfeldertafel} (WANTED: norsk eller engelsk begrep)}
+\begin{table}[h!]
+\centering
+\label{tab:prob_two_events}
+\begin{tabular}{l|ll|l}
+\cline{2-3}
+                            & $A$            & $\overline{A}$            &                               \\ \hline
+\multicolumn{1}{|l|}{$B$}   & $P(A\cap B)$   & $P(\overline{A}\cap B)$   & \multicolumn{1}{l|}{$P(B)$}   \\
+\multicolumn{1}{|l|}{$\overline{B}$} & $P(A\cap \overline{B})$ & $P(\overline{A}\cap \overline{B})$ & \multicolumn{1}{l|}{$P(\overline{B})$} \\ \hline
+                            & $P(A)$         & $P(\overline{A})$         & \multicolumn{1}{l|}{$1$}      \\ \cline{2-4} 
+\end{tabular}
+\caption{To hendelser A og B i en \textit{Vierfeldertafel}}
+\end{table}
+\begin{itemize}
+\item Det er to spalter og to rekker, hver for en hendelse og motsetningen
+\item I alle retninger kan man summe ting sammen
+\item Det trenges bare tre utfylte felter for å regne ut resten
+\end{itemize}
+\end{frame}
+
+\begin{frame}{\textit{Vierfeldertafel} (WANTED: norsk eller engelsk begrep)}
+\begin{columns}
+ \begin{column}{0.38\textwidth}
+\begin{table}[h!]
+\centering
+\caption{Eksempel \textit{Vierfeldertafel}}
+\label{tab:fourfold_eksempel1}
+\begin{tabular}{l|ll|l}
+\cline{2-3}
+                            & $A$            & $A^C$            &                               \\ \hline
+\multicolumn{1}{|l|}{$B$}   & 0.4   &     & \multicolumn{1}{l|}{0.533}   \\
+\multicolumn{1}{|l|}{$B^C$} &   & 0.292 & \multicolumn{1}{l|}{} \\ \hline
+                            &          &          & \multicolumn{1}{l|}{$1$}      \\ \cline{2-4} 
+\end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+%\caption{Eksempel \textit{Vierfeldertafel} ferdig utfylt}
+\label{tab:fourfold_eksempel2}
+\begin{tabular}{l|ll|l}
+\cline{2-3}
+                            & $A$            & $A^C$            &                               \\ \hline
+\multicolumn{1}{|l|}{$B$}   & 0.4   & 0.133    & \multicolumn{1}{l|}{0.533}   \\
+\multicolumn{1}{|l|}{$B^C$} & 0.175  & 0.292 & \multicolumn{1}{l|}{0.467} \\ \hline
+                            & 0.575         & 0.425         & \multicolumn{1}{l|}{$1$}      \\ \cline{2-4} 
+\end{tabular}
+\end{table}
+ \end{column}
+ \begin{column}{0.58\textwidth}
+\begin{itemize}
+\item Det er gitt tre verdier, $P(B)$, $P(A\cap B)$, $P(A^C\cap B^C)$
+\item Resten kan regnes ut ved summeformalen
+\item Eksempel: $P(A^C\cap B)=P(A\cap B)-P(B)=0.533-0.4=0.133$
+\item Kan brukes for å finne andre ting
+\item Betinget sannsynlighet: $P(A|B)=\frac{P(A\cap B)}{P(B)}=\frac{0.4}{0.533}=0.75$
+\end{itemize}
+ \end{column}
+\end{columns}
 \end{frame}
 
 \subsection*{Spørretid}
