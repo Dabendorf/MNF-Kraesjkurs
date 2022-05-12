@@ -8,7 +8,7 @@
 Eksempel: $3|12$ eller $\frac{12}{3} = 4$ eller $12=3\cdot 4$
 \end{itemize}
 \end{block}
-
+\pause
 \begin{block}{Modulo (Klokkearitmetikk)}
 \begin{itemize}
 \item $a\, mod\, b$ gir ut resten av heltall divisjon av $\frac{a}{b}$ ($a\%b$ i programmeringsspråk)
@@ -19,12 +19,13 @@ Eksempel: $17\, mod\, 5\, = 2$ fordi $17=3\cdot 5+2$
 \end{frame}
 
 \begin{frame}[fragile]{Algoritme for divisjon /modulo}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item $d=q\cdot a + r$ med
 \item $q=\floor*{\frac{d}{a}}$ og $r=d\, mod\, a$
 \item Eksempel: $q=\floor*{\frac{17}{5}} = \floor*{3,4}=3$
 \item $17=3\cdot 5 + r$ $\iff$ $17=15+r$ $\iff$ $r=2$
 \end{itemize}
+\pause
 \begin{minted}{python}
 def rest(d, a):              # d = 17, a = 5
    q = floor(d/a)            # q = floor(17/5 = 3
@@ -43,8 +44,8 @@ def rest(d, a):              # d = 17, a = 5
 \item Eksempel: $8\, \equiv 3\, (mod\, 5)$ betyr $8\, mod\, 5=3=3\, mod\, 5$ 
 \end{itemize}
 \end{block}
-
-\begin{itemize}
+\pause
+\begin{itemize}[<+->]
 \item Addisjon: $(a+b)\, mod\, m = (a\,mod\, \,m + b\, mod\, m)\, mod\, m$
 \item $(8+21)\, mod\, 6 = (8\,mod\, \,6 + 21\, mod\, 6)\, mod\, 6$
 \item Multiplikasjon: $(a\cdot b)\, mod\, m = (a\,mod\, \,m \cdot b\, mod\, m)\, mod\, m$
@@ -60,6 +61,7 @@ def rest(d, a):              # d = 17, a = 5
 \item Finn løsningen: $(57\cdot x^3)\, mod\,5$
 \end{itemize}
 \end{exampleblock}
+\pause
 \medskip
 
 $x \equiv 3\,(mod\, 5)$ $\rightarrow x=3$\\
@@ -76,6 +78,8 @@ $=(2\cdot 3\cdot 3\cdot 3)\, mod\, 5=54\, mod\, 5=4$
 \item Finn løsningen: $(3\cdot x+2\cdot y^2)\, mod\,5$
 \end{itemize}
 \end{exampleblock}
+\pause
+
 \medskip
 
 $x \equiv 3\,(mod\, 5)$ $\rightarrow x=3$\\
@@ -90,6 +94,8 @@ $(3\cdot x+2\cdot y^2)\, mod\,5=((3\cdot x)\, mod\, 5+ (2\cdot y^2))\, mod\, 5=(
 \begin{block}{Tallsystem}
 En representasjon av tall med forskjellige tegner med en base
 \end{block}
+\pause
+
 \medskip
 
 \begin{table}[]
@@ -124,6 +130,7 @@ def dec_to_base(n, b):
 print(dec_to_base(22, 2))
 \end{minted}
  	\end{column}
+ 	\pause
     \begin{column}{0.28\textwidth}
 \begin{table}
 \begin{tabular}{r|c|r}
@@ -158,6 +165,7 @@ def base_to_dec(n, b):
 print(base_to_dec(10110, 2))
 \end{minted}
  	\end{column}
+ 	\pause
     \begin{column}{0.28\textwidth}
 \begin{table}
 \begin{tabular}{r|r|r}
@@ -181,13 +189,13 @@ toAdd & n & sum \\ \hline
 Et tall som bare kan deles av seg selv og 1\\
 Eksempler: 2,3,5,7,11,13,...
 \end{block}
-
+\pause
 \begin{block}{Greatest common divisor (største felles faktor)}
 $gcd(a,b) := $det største tallet som deler både a og b\\
 Eksempel: $gcd(4,6)=2$\\
 Co-prime: a og b er co-prime dersom $gcd(a,b)=1$
 \end{block}
-
+\pause
 \begin{block}{Least common multiple}
 $lcm(a,b) := $ det minste tallet som kan deles av både a og b\\
 Eksempel: $lcm(4,6)=12$\\
@@ -209,6 +217,7 @@ def gcd(a, b):
     return a
 \end{minted}
  	\end{column}
+ 	\pause
     \begin{column}{0.38\textwidth}
 \begin{table}
 \begin{tabular}{l|l|l|l|l}
@@ -234,6 +243,8 @@ $gcd(12,28)=4=-2\cdot 12 + 1\cdot 28$\medskip
 Kan brukes for å finne multiplikativ inverse\\
 Multiplikativ inverse finnes dersom $g(a,b)=1$
 \end{block}
+\pause
+
 \begin{block}{Finne multiplicative inverse for $a$ med $mod\, m$}
 \begin{itemize}
 \item Funker bare dersom $gcd(a,m)=1$\\
@@ -259,6 +270,7 @@ def gcdExtended(a, b):
     return gcd, x, y
 \end{minted}
  	\end{column}
+ 	\pause
     \begin{column}{0.38\textwidth}
 \begin{table}
 \begin{tabular}{l|l||l|l|l|l|l}
@@ -275,7 +287,7 @@ a&b&gcd&x1&x2&x&y\\ \hline
 \end{frame}
 
 \begin{frame}{Eksempel Multiplicate Inverse}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Hva er multiplicative inverse av $5\, mod\, 13$?
 \item $gcd(a,m) = gcd(5,13)=1$ $\rightarrow$ har multiplicative inverse
 \item Linærkombinasjon fra gcd: $-5\cdot 5+13\cdot 2=1$
@@ -307,6 +319,7 @@ a&b&gcd&x1&x2&x&y\\ \hline
 \item Eksempel: Caesar – $f(c) = (c+key) \% mod 26$
 \end{itemize}
 \end{block}
+\pause
 \begin{block}{Asymmetrisk kryptografi}
 \begin{itemize}
 \item Hver person har \textit{to} nøkler: Privat og offentlig
@@ -319,7 +332,7 @@ a&b&gcd&x1&x2&x&y\\ \hline
 
 \subsection*{RSA}
 \begin{frame}{RSA}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Asymmetrisk kryptering med to nøkler for hver deltaker
 \item Kryptering
 	\begin{itemize}

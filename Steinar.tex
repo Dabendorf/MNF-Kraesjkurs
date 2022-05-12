@@ -474,7 +474,7 @@ Det viser seg at De Morgan's lover også fungerer på kvantorer.
     
     \begin{block}{Avgjør om de følgende funksjonene er injektive, surjektive, eller bijektive:}
         $f : \mathbb{R} \rightarrow \mathbb{R}$, $f(x) := 2x + 1$\\
-        $g : \mathbb{Z} \rightarrow \mathbb{Z}$, $g(x) := x$ mod $2$\\
+        $g : \mathbb{Z} \rightarrow $ Bool, $g(x) := x$ mod $2 = 0$\\
         $h : \mathbb{R} \rightarrow \mathbb{R}$, $h(x) := e^x$\\
         $k : \mathbb{R} \rightarrow \mathbb{R^+}$, $k(x) := e^x$\\
     \end{block}
@@ -676,6 +676,18 @@ c                                    &  & d \arrow[ll]
     \end{columns}
 \end{frame}
 
+\begin{frame}{Relasjonskomposisjon}
+    Gitt to relasjoner $R \subseteq A \times B$ og $S \subseteq B \times C$, kan vi konstruere komposisjonen $S \circ R \subseteq A \times C$:\\
+    $S \circ R := \{(a, c) | (a, b) \in R \land (b, c) \in S\}$
+    
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.5]{ros.png}
+        \caption{$S \circ R$}
+        \label{fig:my_label2}
+    \end{figure}
+\end{frame}
+
 \begin{frame}{Tavleoppgaver om relasjoner}
 Avgjør om følgende relasjoner er refleksive, symmetriske, anti-symmetriske, eller transitive:\\
     \begin{itemize}
@@ -777,10 +789,68 @@ Vi har mange teknikker for løse slike oppgaver. Problemet er at det ikke er opp
     \end{block}
 \end{frame}
 
+\begin{frame}{Et notasjonsmellomspill}
+    $\sum_{i=1}^n, \sum_{i \in I}$
+\end{frame}
+
 \subsection{Induksjon}
-\begin{frame}
-TODO: Fill with content @Steinar 
-% Wadde Hadde Dudde Da
+\begin{frame}{Matematisk induksjon}
+    Et induksjonsbevis for en påstand $P(x)$ består av to steg:\\
+    \begin{itemize}
+        \item Vis at $P(0)$ stemmer
+        \item Vis at om $P(n)$ stemmer, må $P(n+1)$ stemme
+    \end{itemize}\\
+    Dermed har vi bevist at $\forall x [ x > 0 \rightarrow P(x)]$
+    
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.1]{domino.PNG}
+        % \caption{}
+        \label{fig:my_label}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Eksempel på matematisk induksjon}
+    Vis at $\sum_{i=0}^{n} i = \frac{n(n+1)}{2}$.\\
+    
+    Vi lar $P(x) := \sum_{i=0}^{x} i = \frac{x(x+1)}{2}$\\
+    Vi begynner med base case, at påstanden holder for $P(0)$.\\
+    $P(0): \sum_{i=0}^{0} i = \frac{0(0+1)}{2} = 0$ \checkmark\\
+\end{frame}
+
+\begin{frame}{Eksempel på matematisk induksjon (fortsettelse)}
+     Nå antar vi at påstanden holder for et heltall $k$: \\
+    $P(k): \sum_{i=0}^{k} i = \frac{k(k+1)}{2}$\\
+    Nå viser vi at det medfører at påstanden også må hold for $k+1$:\\
+    $P(k+1): \sum_{i=0}^{k+1} i = \frac{(k+1)((k+1)+1)}{2}$\\
+    $\implies 0 + 1 + 2 + .... + k + (k+1) = \frac{(k+1)(k+2)}{2}$\\
+    
+    Vi erstatter $0 + 1 + 2 + .... + k$ med induksjonshypotesen:\\
+    $\implies \frac{k(k+1)}{2} + k + 1 = \frac{(k+1)(k+2)}{2}$\\
+    $\frac{k^2 + 3k + 1}{2} = \frac{k^2+3k+2}{2}$ \checkmark
+\end{frame}
+
+\begin{frame}{Sterk induksjon}
+    Dette er veldig likt. Men istedet for å anta $P(k)$, antar man $P(0) \land P(1) \land .... \land P(k)$.\\
+    Du kan tenke helt likt på disse to formene for induksjon, eneste forskjellen er at du kan anta litt mer i induksjonssteget.
+\end{frame}
+
+\begin{frame}{Rekursive funksjoner}
+    En rekursiv funksjoner er en funksjon som refererer til seg selv i definisjonen.\\
+    \begin{block}
+        $fac(0) := 1$\\
+        $fac(n) := n * fac(n-1)$\\\\
+        
+        $fac(3) = 3 * fac(2)$\\
+        $= 3 * 2 * fac(1)$\\
+        $= 3 * 2 * 1 * fac(0)$\\
+        $= 3 * 2 * 1 * 0$\\
+        $= 0$
+    \end{block}
+\end{frame}
+
+\begin{frame}{Rekursive definisjoner}
+    
 \end{frame}
 
 \subsection{Relasjoner}
@@ -798,18 +868,12 @@ TODO: Fill with content @Steinar
     \end{figure}
 \end{frame}
 
-\section{Sekvenser/Rekker}
-\begin{frame}
-
-TODO: Fill with content @Steinar 
-\end{frame}
-
 \subsection*{Spørretid}
 \begin{frame}{Spørsmål?}
     \begin{figure}
         \centering
         \includegraphics[height = 4.9cm]{images/guillaume7.jpg}
-        \caption{Guillaume, wait, dette bildet hadde vi før?}
+        \caption{Guillaume, vent, dette bildet hadde vi jo før?}
         \label{fig:guillaume7b}
     \end{figure}
 \end{frame}

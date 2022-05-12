@@ -69,7 +69,7 @@ Finne \textit{en} Spanning Tree
 \end{frame}
 
 \begin{frame}{BFS og DFS}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Begge to går gjennom grafen fra en startnode
 \item I hver runde går man videre til naboene til en node
 \item Forskjell: BFS bruker kø, DFS stack
@@ -232,6 +232,7 @@ def dfs(visited, graph, node):
 \begin{block}{Minimum Spanning Trees}
     Et Minimum Spanning Tree for en graf er en Spanning Tree der summen av vektene (weights) er minimal.
     \end{block}
+    \pause
 \begin{block}{Kruskals algoritme}
 1. Sorter alle kanter etter sine vekter\\
 2. Velg kanten med minst vekt som ikke ble valgt før. Hvis det nå blir en syklus, ignorer kanten. Hvis ikke, legg kanten til treet.\\

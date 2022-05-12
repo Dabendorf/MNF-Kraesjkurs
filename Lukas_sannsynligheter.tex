@@ -8,6 +8,7 @@
 \item Det blir $n_1\cdot n_2$ kombinasjoner
 \end{itemize}
 \end{block}
+\pause
 \begin{block}{Eksempel}
 \begin{itemize}
 \item Det er to type maskiner som trenges
@@ -26,6 +27,7 @@
 \item Det blir $n_1+n_2$ muligheter å gjøre det
 \end{itemize}
 \end{block}
+\pause
 \begin{block}{Eksempel}
 \begin{itemize}
 \item En student skal velge masteroppgaven sin
@@ -44,6 +46,7 @@
 \item Det blir $n_1+n_2-felles(n_1,n_2)$ muligheter
 \end{itemize}
 \end{block}
+\pause
 \begin{block}{Eksempel}
 \begin{itemize}
 \item På fredag er det amerikansk-norsk folkefest
@@ -61,6 +64,7 @@
 \item Det blir da $n/d$ forskjellige muligheter
 \end{itemize}
 \end{block}
+\pause
 \begin{block}{Eksempel}
 \begin{itemize}
 \item I en fornøyelsespark for katter blir det talt 400 beiner. Mennesker og andre dyr har ikke lov å være i fornøyelsesparken
@@ -72,7 +76,7 @@
 
 \subsection*{Kombinatorikk}
 \begin{frame}{Permutasjon? Kombinasjon? Variasjon? Hæ?}
-\begin{enumerate}
+\begin{enumerate}[<+->]
 \item Blir alle elementer med?
 	\begin{itemize}
 	\item Ja: Permutasjon
@@ -103,7 +107,7 @@
 \item Permutasjon uten repetisjon: $n!=7!=720$
 \end{itemize}
 \end{block}
-
+\pause
 \begin{block}{Eksempel 2}
 \begin{itemize}
 \item Hvor mange måter finnes det for å ordne bokstavene \textit{Mississippi}?
@@ -121,11 +125,11 @@
 \item Kombinasjon uten repetisjon: $\binom{n}{k}=\binom{7}{3}=\frac{7!}{3!\cdot 4!}=35$
 \end{itemize}
 \end{block}
-
+\pause
 \begin{block}{Eksempel 4}
 \begin{itemize}
 \item Vi har 5 typer is og skal spise 3 av dem. Vi er opptatt av rekkefølgen for best smak.
-\item Ikke ealle lementer blir med, rekkefølge viktig, med repetisjon
+\item Ikke alle elementer blir med, rekkefølge viktig, med repetisjon
 \item $n^k=5^3=125$
 \end{itemize}
 \end{block}
@@ -143,7 +147,7 @@
 
 \subsection{Sannsynligheter}
 \begin{frame}{Definisjoner}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item \textbf{Utfallsrom: }Alle mengder som har en sannsynlighet
 \item \textbf{S: }Alle mulige utfall
 \item \textbf{E: }Alle ønskete utfall
@@ -156,7 +160,7 @@
 \end{frame}
 
 \begin{frame}{Regneregler}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item $P(A\cup B)=P(A)+P(B)-P(A\cap B)$ (tilsvarer subtraction rule)
 \item $P(A\cap B)=P(A)\cdot P(B)$ hvis A,B statistisk uavhengig (tilsvarer multiplication rule)
 \item $\sum_{s\in S} P(s) = 1 $ (summen av alle ting som kan skje har sannsynlighet 1)
@@ -167,7 +171,7 @@
 
 \begin{frame}{Eksempler}
 \begin{block}{Terninger}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Det er to terninger, den ene er vanlig med 6 jevne sider
 \item Den andre har tallene $\{3,4,5,5,6,6\}$
 \item Hvor stor er sannsynligheten at vi kaster en 7 med begge terninger?
@@ -186,7 +190,7 @@
 
 \begin{frame}{Eksempler}
 \begin{block}{Kortspill}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Vi har et vanlig kortspill med 32 kort (4 farger, $\{7,8,9,10,J,Q,K,A\}$)
 \item Hva er sannsynligheten at vi trekker et hjerte eller en konge?
 \item Hva er sannsynligheten at en av disse kortene er 7,8 eller 9?
@@ -211,7 +215,8 @@
 \end{tabular}
 \caption{To hendelser A og B i en \textit{Vierfeldertafel}}
 \end{table}
-\begin{itemize}
+\pause
+\begin{itemize}[<+->]
 \item Det er to spalter og to rekker, hver for en hendelse og motsetningen
 \item I alle retninger kan man summe ting sammen
 \item Det trenges bare tre utfylte felter for å regne ut resten
@@ -247,8 +252,9 @@
 \end{tabular}
 \end{table}
  \end{column}
+ \pause
  \begin{column}{0.58\textwidth}
-\begin{itemize}
+\begin{itemize}[<+->]
 \item Det er gitt tre verdier, $P(B)$, $P(A\cap B)$, $P(A^C\cap B^C)$
 \item Resten kan regnes ut ved summeformalen
 \item Eksempel: $P(A^C\cap B)=P(A\cap B)-P(B)=0.533-0.4=0.133$
