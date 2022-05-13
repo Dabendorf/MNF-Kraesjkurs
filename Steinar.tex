@@ -5,13 +5,15 @@
     \item En proposisjon er et uttrykk med en sannhetsverdi, som alltid er enten Sann (T) elller Usann (F).
     \item Ofte setter vi dem i variabler, for å gjøre det lettere å lese.
 \end{itemize}
+\pause
 \begin{block}{Proposisjoner}
     p := 2 < 3 \\
-    q := "Månen er laget av ost"\\
-    r := "MNF130 er et nyttig fag for informatikere"
+    q := ''Månen er laget av ost''\\
+    r := ''MNF130 er et nyttig fag for informatikere''
 \end{block}
+\pause
 \begin{block}{Ikke proposisjoner}
-    "Hva skal vi ha til middag i dag?"\\
+    ''Hva skal vi ha til middag i dag?''\\
     x + y < z
 \end{block}
 \end{frame}
@@ -21,12 +23,14 @@
     \item Gitt en proposisjon $p$, kan vi representere den motsatte proposisjonen som $\lnot p$.
     \item Vi kan tegne opp alle mulige verdier et slikt uttrykk kan ha i en tabell.
 \end{itemize}
+\pause
 
-\begin{block}
+\begin{block}{Eksempler}
     La $p := 2 < 3$. \\
-    $p$ = "Det er sant at 2 er mindre enn 3" \\
-    $\lnot p$ = "Det er ikke sant at 2 er mindre enn 3"
+    $p$ = ''Det er sant at 2 er mindre enn 3'' \\
+    $\lnot p$ = ''Det er ikke sant at 2 er mindre enn 3''
 \end{block}
+\pause
 \begin{tabular}{c|c}
 $p$ & $\lnot p$ \\ \hline
 T & F \\
@@ -43,6 +47,7 @@ F & T \\ \hline
         $p \lor q$ = Jorden er flat \textbf{eller} månen er flat\\
         $p \land q$ = Jorden er flat \textbf{og} månen er flat\\
     \end{block}
+    \pause
     \begin{tabular}{c|c|c|c}
         $p$ & $q$ & $p \lor q$ & $p \land q$ \\ \hline
         T & T & T & T \\
@@ -57,10 +62,11 @@ F & T \\ \hline
         \item En proposisjon kan implisere en annen proposisjon.
     \end{itemize}
     \begin{block}{Eksempel}
-        La $p$ := "Det regner ute", og $q$ := "Bakken er våt"\\
-        $p \rightarrow q$ = "Hvis det regner ute, blir bakken våt"\\
-        $p \leftrightarrow q$ = "Det regnet ute hvis og bare hvis bakken er våt"
+        La $p$ := ''Det regner ute'', og $q$ := ''Bakken er våt''\\
+        $p \rightarrow q$ = ''Hvis det regner ute, blir bakken våt''\\
+        $p \leftrightarrow q$ = ''Det regner ute hvis og bare hvis bakken er våt''
     \end{block}
+    \pause
     \begin{tabular}{c|c|c|c}
         $p$ & $q$ & $p \rightarrow q$ & $p \leftrightarrow q$ \\ \hline
         T & T & T & T \\
@@ -80,9 +86,12 @@ F & T \\ \hline
          T & F & T & T\\
          F & T & F & T
     \end{tabular}
+    \pause
     \begin{itemize}
         \item Konklusjon 1: $p \equiv \lnot \lnot p$
+        \pause
         \item Konklusjon 2: $p \lor \lnot p \equiv T$, og er en tautologi
+        \pause
         \item For å se om to uttrykk er ekvivalente, tegn sannhetstabellen og se om kollonene deres er det samme.
         \item For å se om et uttrykk er en tautologi, tegn sannhetstabellen og se om kolonnen alltid er T.
     \end{itemize}
@@ -164,7 +173,7 @@ F & T \\ \hline
 \begin{frame}{Typisk logikkoppgave}
     \begin{columns}
     \begin{column}{0.48\textwidth}
-        Vis at $(p \land \lnot q) \rightarrow \lnot r$ og $(p \land q) \rightarrow q$ er logisk ekvivalente, ved å bruke enkle logiske ekvivalenser.\\[1cm]
+        Vis at $(p \land \lnot q) \rightarrow \lnot r$ og $(p \land r) \rightarrow q$ er logisk ekvivalente, ved å bruke enkle logiske ekvivalenser.\\[1cm]
         
         1. $a \rightarrow b \equiv \lnot a \lor b$ \\
         2. $\lnot (a \land b) \equiv \lnot a \lor \lnot b$\\
@@ -172,13 +181,21 @@ F & T \\ \hline
     \end{column}
     \begin{column}{0.48\textwidth}
         \begin{math}
+            \pause
             (p \land q) \rightarrow \lnot r \\
+            \pause
             \equiv \lnot (p \land \lnot q) \lor \lnot r \\
+            \pause
             \equiv (\lnot p \lor \lnot \lnot q) \lor \lnot r \\
+            \pause
             \equiv (\lnot p \lor q) \lor \lnot r \\
+            \pause
             \equiv \lnot p \lor q \lor \lnot r \\
+            \pause
             \equiv \lnot p \lor \lnot r \lor q \\
+            \pause
             \equiv \lnot (p \land r) \lor q \\
+            \pause
             \equiv (p \land r) \rightarrow q
             \qed
         \end{math}
@@ -195,9 +212,10 @@ F & T \\ \hline
         $P(x, y, z) = x + y < z$\\
         $Q(s)$ = $s$ contains $'a'$
     \end{block}
+    \pause
     \begin{block}{Eksempler på evaluering}
-        $P(1, 2, 3) = 1 + 2 < 3 = 3 < 3 = F$ \\ 
-        $Q("Steinar") = "Steinar"$ contains $'a' = T$
+        $P(1, 2, 3) = 1 + 2 < 3 = F$ \\ 
+        $Q(''Steinar'') = ''Steinar''$ contains $'a' = T$
     \end{block}
 
 \end{frame}
@@ -205,13 +223,14 @@ F & T \\ \hline
 \begin{frame}{Kvantorer (/Quantifiers)}
     \begin{itemize}
         \item Ofte vil vi si noe om et predikat $P(x)$, men for flere potensielle $x$ samtidig.
-        \item $\forall x P(x)$ = "For alle $x$ er det sant at $P(x)$"
-        \item $\exists x P(x)$ = "Det eksisterer en $x$ slik at det er sant at $P(x)$"
+        \item $\forall x P(x)$ = ''For alle $x$ er det sant at $P(x)$''
+        \item $\exists x P(x)$ = ''Det eksisterer en $x$ slik at det er sant at $P(x)$''
     \end{itemize}
     
+    \pause
     \begin{block}{Eksempler}
-        $\forall x (x < x + 1)$ = "For alle x er det sant at $x < x +1$"\\[5mm]
-        $\exists x (x > x^2)$ = "Det eksisterer en x slik at det er sant at $x > x^2$"
+        $\forall x (x < x + 1)$ = ''For alle x er det sant at $x < x +1$''\\[5mm]
+        $\exists x (x > x^2)$ = ''Det eksisterer en x slik at det er sant at $x > x^2$''
     \end{block}
 \end{frame}
 
@@ -230,6 +249,7 @@ def exists(p, xs):
     return False
     \end{minted}
     
+    \pause
     \begin{itemize}
         \item exists(p, xs) = $\exists x (x \in xs \land p(x))$
         \item forall(p, xs) = $\forall x (x \in xs \land p(x))$
@@ -239,29 +259,31 @@ def exists(p, xs):
 \begin{frame}{Nøstede kvantorer (/Nested quantifiers)}
     \begin{itemize}
         \item Ofte vil vi si noe om mange kombinasjoner av variabler samtidig.
-        \item Da slå vi sammen flere $\forall$ og $\exists$.
+        \item Da slår vi sammen flere $\forall$ og $\exists$.
     \end{itemize}
     
     \begin{block}{Eksempler}
-        $\forall x \forall y ()$ \\
-        $\forall x \exists y (x * y = 1)$ = "For alle x eksisterer det en y slik at er $x * y = 1$" \\
-        $\exists x \forall y (x^2 < y^2)$ = "Det eksisterer en x slik at for alle y er $x^2 < y^2$"\\
+        $\forall x \forall y (x^2 + y^2 \geq 0)$ \\
+        $\forall x \exists y (x * y = 1)$ = ''For alle x eksisterer det en y slik at er $x * y = 1$'' \\
+        $\exists x \forall y (x^2 < y^2)$ = ''Det eksisterer en x slik at for alle y er $x^2 \leq y^2$''\\
         $\lnot \exists n \exists a \exists b \exists c (a,b,c,n \in Z \land n > 2 \land a^n + b^n = c^n)$
     \end{block}
 \end{frame}
 
 \begin{frame}{De Morgan dukker opp igjen}
-Det viser seg at De Morgan's lover også fungerer på kvantorer.
+Det viser seg at De Morgan's lover også fungerer på kvantorer.\\
+    \begin{columns}
+    \begin{column}{0.48\textwidth}
     \begin{itemize}
         \item $\lnot \forall x P(x) \equiv \exists x \lnot P(x)$
         \item $\lnot \exists x P(x) \equiv \forall x \lnot P(x)$
-    \end{itemize}
-    \begin{columns}
-    \begin{column}{0.48\textwidth}
-        \includegraphics[scale=1]{bigger fish.PNG}
+    \end{itemize}        
     \end{column}
+    \pause
     \begin{column}{0.48\textwidth}
         \includegraphics[scale=0.3]{Always a bigger fish.jpeg}
+        \pause
+        \includegraphics[scale=1]{bigger fish.PNG}
     \end{column}
     \end{columns}
     
@@ -284,12 +306,14 @@ Det viser seg at De Morgan's lover også fungerer på kvantorer.
     \indent \hspace{3mm}    1. Det inneholder ingen duplikater\\
     \indent \hspace{3mm}    2. Det har ingen konkret rekkefølge
     
+    \pause
     \begin{block}{Eksempel}
         Alle de følgende settene er like: \\
         $\{1, 2, 3\}$, $\{3, 2, 1\}$ \\
         $\{1, 1, 1, 1, 2, 2, 3, 3\}$
     \end{block}
     
+    \pause
     \begin{block}{Eksempel}
         $1 \in \{1, 2, 3\}$ = T \\
         $5 \in \{1, 2, 3\}$ = F
@@ -298,10 +322,10 @@ Det viser seg at De Morgan's lover også fungerer på kvantorer.
 
 
 \begin{frame}{Kjente sett}
-    Flere sett bruker vi veldig ofte. Her er noen av dem.
+    Flere sett bruker vi veldig ofte. Her er noen av dem.\\
     
     \begin{tabular}{c|l|c}
-        Symbol & Navn & Innhold \\
+        Symbol & Navn & Innhold \\ \hline
         $\mathbb{N}$ & Naturlige tall & $\{0, 1, 2, 3, ....\}$\\
         $\mathbb{Z}$ & Heltall & $\{... -2, -1, 0, 1, 2, 3, ....\}$\\
         $\mathbb{Q}$ & Rasjonale tall & $\{-3/2, 1/10, 4/5, 5/4, ....\}$\\
@@ -326,7 +350,7 @@ Det viser seg at De Morgan's lover også fungerer på kvantorer.
     $A - B = A \backslash B := \{x | x \in A\land  x \notin B\}$\\
     $A^C = \bar{A} := \{x | x \notin A\}$
     
-
+    \pause
     \begin{figure}%
         \centering
         \subfloat[\centering $A \cup B$]{{\includegraphics[width=2.5cm]{union.png} }}%
@@ -350,7 +374,7 @@ Det viser seg at De Morgan's lover også fungerer på kvantorer.
         \item $A \supset B := B \subset A$
         \item $A = B := A \subseteq B \land B \subseteq A$
     \end{itemize}
-    
+    \pause
     \begin{block}{Eksempler}
         $\{1\} \subseteq \{1, 2\}$ = T\\
         $\{1\} \subseteq \{5\}$ = F\\
@@ -373,6 +397,7 @@ Det viser seg at De Morgan's lover også fungerer på kvantorer.
         \item Bruk områdene i deluttrykkene til å farge omårdene i de større uttrykkene, dvs hele $(A - C) \cap (B - C)$ her.
         \item Er områdene til hele uttrykkene på hver side av = det samme?
     \end{itemize}
+    \pause
     Alternativt: bruk definisjonene til $\cap$, $\cup$, etc til å omformulere uttrykket til det på høyresiden av =.
 \end{frame}
 
@@ -419,18 +444,20 @@ Det viser seg at De Morgan's lover også fungerer på kvantorer.
     Funksjoner kjenner vi fra INF100 i fjor. Nå skal vi formalisere dem litt mer.\\
     Se på funksjoner som en utregning fra et eller flere sett til et annet sett.\\
     Domenet til en funksjon er inputsettet.\\
-    Kodemenet til en funksjon er outputsettet.\\
+    Kodomenet til en funksjon er outputsettet.\\
     %\begin{block}
+    \pause
     \begin{columns}
-    \begin{column}{0.28\textwidth}
+    \begin{column}{0.25\textwidth}
          $f : \mathbb{R} \rightarrow \mathbb{R}$\\
         $f(x) := x+1$ \\
-        $g : \mathbb{Z} \rightarrow Bool$ \\
+        
         $P : (\mathbb{R}, \mathbb{R}) \rightarrow Bool$\\
         $P(x, y) := x^2 < y$
      \end{column}
-    \begin{column}{0.28\textwidth}
+    \begin{column}{0.35\textwidth}
          $$
+            g : \mathbb{Z} \rightarrow Bool \\
             g(n) :=
             \begin{cases}
             T, n \text{ mod } 2 = 0\\
@@ -438,9 +465,6 @@ Det viser seg at De Morgan's lover også fungerer på kvantorer.
             \end{cases}
         $$
     \end{column}
-       
-       
-        
     \end{columns}
     %\end{block}
 \end{frame}
@@ -452,6 +476,7 @@ Det viser seg at De Morgan's lover også fungerer på kvantorer.
         \item Surjektiv hvis $\forall b \exists a (f(a) = b)$. Med andre ord: alle $b$ har minst én representant i $A$.
         \item Bijektiv hvis den er både injektiv og surjektiv. Da har den et invers.
     \end{itemize}
+    \pause
     \begin{figure}%
         \centering
         \subfloat[\centering $Injektiv$]{{\includegraphics[width=2.5cm]{inj.png} }}%
@@ -471,7 +496,7 @@ Det viser seg at De Morgan's lover også fungerer på kvantorer.
         \item Surjektiv: $\forall b \exists a (f(a) = b)$.\\
         \item Bijektiv: begge de over \\
     \end{itemize}
-    
+    \pause
     \begin{block}{Avgjør om de følgende funksjonene er injektive, surjektive, eller bijektive:}
         $f : \mathbb{R} \rightarrow \mathbb{R}$, $f(x) := 2x + 1$\\
         $g : \mathbb{Z} \rightarrow $ Bool, $g(x) := x$ mod $2 = 0$\\
@@ -491,6 +516,7 @@ Gitt to funksjoner:
 Kan vi definere en unik tredje funksjon: \\
     $g \circ f : A \rightarrow C$\\
     $g \circ f := g(f(x))$\\
+    \pause
 Om en funksjon $f : A \rightarrow B$ er bijektiv, finnes det en unik invers funksjon $f^{-1} : B \rightarrow A$ slik at $f(f^{-1}(x)) = x$ og $f^{-1}(f(x)) = x$.
     \end{column}
     \begin{column}{0.33\textwidth}
@@ -516,25 +542,30 @@ Om en funksjon $f : A \rightarrow B$ er bijektiv, finnes det en unik invers funk
     \begin{columns}
     \begin{column}{0.48\textwidth}
         Hva er størst av $|\mathbb{N}|$ og $|\mathbb{Z}|$?\\
+        \pause
         f(n) :=
         \begin{cases}
             \frac{n}{2}, n \text{ mod } 2 = 0\\
             -\frac{n+1}{2}, \text{otherwise}\\
         \end{cases}\\
+        \pause
         Konklusjon: $|\mathbb{N}|$ = $|\mathbb{Z}|$ = $\aleph_0$.
     \end{column}
+    \pause
     \begin{column}{0.48\textwidth}
         Hva er størst av $|\mathbb{N}|$ og $|\mathbb{Q}|$?\\
+        \pause
         $f(0) := 1$\\
         $f(n) := \frac{1}{2\lfloor f(n-1) \rfloor - f(n-1)+1}$\\
         $g(0) := 0$\\
         $g(2n) := f(n)$\\
         $g(2n-1) := -f(n)$\\
+        \pause
         Konklusjon: $|\mathbb{N}|$ = $|\mathbb{Q}|$ = $\aleph_0$
     \end{column}
-    \end{columns}
+    \end{columns}\\
     
-    
+    \pause
     \newline Derimot er $|\mathbb{R}| > |\mathbb{N}|$. For en enkel forklaring med et eksempel, se Veritasiums video om Hilberts Hotell: \url{https://www.youtube.com/watch?v=OxGsU8oIWjY}
     
 %Gud, alle disse feilmeldingene, Steinar
@@ -553,6 +584,7 @@ Om en funksjon $f : A \rightarrow B$ er bijektiv, finnes det en unik invers funk
 \section{Relasjoner}
 \begin{frame}[fragile]{Relasjoner}
     En relasjon fra $A$ til $B$ er et subset av $A \times B$.\\
+    \pause
     De er lettere å visualisere ved å tegne dem:\\
     
     R := $\{(a, b), (b, b), (d, c), (d, b), (a, c)\}$\\
@@ -562,7 +594,8 @@ a \arrow[rr] \arrow[rrdd] &  & b \arrow[loop, distance=2em, in=305, out=235] \\
 d \arrow[rr] \arrow[rruu] &  & c                                            
 \end{tikzcd}
 
-Veldig ofte er $A$ og $B$ det samme, dvs et subset av $A \times A$. Da kaller vi det en relasjon \emph{på} $A$.
+\pause
+Veldig ofte er $A$ og $B$ det samme settet, dvs at $R$ er et subset av $A \times A$. Da kaller vi R en relasjon \emph{på} $A$.
 \end{frame}
 
 \begin{frame}[fragile]{Praktisk eksempel på en relasjon}
@@ -570,9 +603,9 @@ Veldig ofte er $A$ og $B$ det samme, dvs et subset av $A \times A$. Da kaller vi
     La det være en relasjon fra $a$ til $b$ om det finnes en funksjon fra typen $a$ til typen $b$.\\
     
 \begin{tikzcd}
-Int \arrow[rr, "bool()", bend right] \arrow[dd, "str()", bend left] &  & Bool \arrow[lldd, "str()"] \arrow[ll, "int()"', bend right] \\
+Int \arrow[rr, ''bool()'', bend right] \arrow[dd, ''str()'', bend left] &  & Bool \arrow[lldd, ''str()''] \arrow[ll, ''int()''', bend right] \\
                                                                     &  &                                                             \\
-Str \arrow[rr, ".split()"] \arrow[uu, "int()", bend left]           &  & {[Str]}                                                    
+Str \arrow[rr, ''.split()''] \arrow[uu, ''int()'', bend left]           &  & {[Str]}                                                    
 \end{tikzcd}
 \end{frame}
 
@@ -580,10 +613,13 @@ Str \arrow[rr, ".split()"] \arrow[uu, "int()", bend left]           &  & {[Str]}
 Gitt en relasjon $R \subseteq A \times A$ på $A$ har vi 5 viktige begreper for å beskrive den:
     \begin{itemize}
         \item Refleksiv: $\forall a ((a, a) \in R)$
+        \pause
         \item Symmetrisk: $\forall a \forall b ((a, b) \in R \leftrightarrow (b, a) \in R)$
-        \item Antisymmetrisk: $\forall a \forall b ((a, b) \in R \rightarrow a = b)$
+        \pause
+        \item Antisymmetrisk: $\forall a \forall b ((a, b) \in R \land (b, a) \in R \rightarrow a = b)$
+        \pause
         \item Transitiv: $\forall a \forall b \forall c [(a, b) \in R \land (b, c) \in R \rightarrow (a, c) \in R]$\\
-
+        \pause
         \item Om en relasjoner er refleksiv, symmetrisk og transitiv, kaller vi det en ekvivalensrelasjon.
     \end{itemize}   
 \end{frame}
@@ -599,7 +635,9 @@ a \arrow[dd] \arrow[rr] &  & b                                             \\
 c \arrow[rruu]          &  & d \arrow[loop, distance=2em, in=305, out=235]
 \end{tikzcd}
         \end{column}
+        \pause
         \begin{column}{0.3\textwidth}
+        
 Refleksiv:
 \begin{tikzcd}
 a \arrow[dd] \arrow[rr] \arrow[loop, distance=2em, in=305, out=235] &  & b \arrow[loop, distance=2em, in=305, out=235] \\
@@ -621,7 +659,9 @@ a \arrow[dd]   &  & b                                             \\
 c \arrow[rruu] &  & d \arrow[loop, distance=2em, in=305, out=235]
 \end{tikzcd}
         \end{column}
+        \pause
         \begin{column}{0.3\textwidth}
+    
         Symmetrisk:
         \begin{tikzcd}
 a \arrow[dd, bend left]                          &  & b \arrow[lldd, bend right]                    \\
@@ -633,7 +673,7 @@ c \arrow[rruu, bend right] \arrow[uu, bend left] &  & d \arrow[loop, distance=2e
 \end{frame}
 
 \begin{frame}[fragile]{Antisymmetriske relasjoner}
-En relasjon $R$ er antisymmetrisk hvis $\forall a \forall b ((a, b) \in R \rightarrow a = b)$.\\
+En relasjon $R$ er antisymmetrisk hvis $\forall a \forall b ((a, b) \in R \land (b, a) \in R \rightarrow a = b)$.\\
     \begin{columns}
         \begin{column}{0.3\textwidth}
         Ikke antisymmetrisk:
@@ -643,6 +683,7 @@ a \arrow[dd, bend left]                          &  & b \arrow[lldd, bend right]
 c \arrow[rruu, bend right] \arrow[uu, bend left] &  & d \arrow[loop, distance=2em, in=305, out=235]
 \end{tikzcd}
         \end{column}
+        \pause
         \begin{column}{0.3\textwidth}
 Antisymmetrisk:
 \begin{tikzcd}
@@ -665,6 +706,7 @@ a \arrow[rr] &  & b \arrow[dd] \\
 c            &  & d \arrow[ll]
 \end{tikzcd}
         \end{column}
+        \pause
         \begin{column}{0.3\textwidth}
 Transitiv:
 \begin{tikzcd}
@@ -712,11 +754,11 @@ Avgjør om følgende relasjoner er refleksive, symmetriske, anti-symmetriske, el
 \section{Bevis}
 
 \begin{frame}{Beviser}
-    Svært mange bevisoppgaver er på formen "Vis at $p \rightarrow q$".\\
+    Svært mange bevisoppgaver er på formen ''Vis at $p \rightarrow q$''.\\
     
-    Om oppgaven er "Vis at om $n$ er et heltall og og $3n+2$ er et oddetall, da er $n$ et oddetall.", da er \\
-    $p = $ "$n$ er et heltall og og $3n+2$ er et oddetall" \\
-    $q = $ "$n$ er et oddetall"\\
+    Om oppgaven er ''Vis at om $n$ er et heltall og og $3n+2$ er et oddetall, da er $n$ et oddetall.'', da er \\
+    $p = $ ''$n$ er et heltall og og $3n+2$ er et oddetall'' \\
+    $q = $ ''$n$ er et oddetall''\\
     
 Vi har mange teknikker for løse slike oppgaver. Problemet er at det ikke er opplagt hvilke som kan brukes. Det er bare å prøve seg frem.
 \end{frame}
@@ -725,6 +767,7 @@ Vi har mange teknikker for løse slike oppgaver. Problemet er at det ikke er opp
     Et direkte bevis for $p \rightarrow q$ er et som antar at $p$ = T, og viser at det medfører at $q$ = T.\\
     Dette er ofte de enkleste bevisene. Om du ikke vet hva slags teknikk som skal brukes, forsøk denne først.\\
     
+    \pause
     \begin{block}{Vis at om $x$ og $y$ er partall, da er $x + y$ også et partall.}
         Vi antar først at $x$ og $y$ er partall. Da kan vi omskrive dem:\\
         $x = 2a$, $y = 2b$, for $a, b \in \mathbb{Z}$.\\
@@ -738,6 +781,7 @@ Vi har mange teknikker for løse slike oppgaver. Problemet er at det ikke er opp
     Istedet for å bevise $p \rightarrow q$, er det ofte lettere å bevise $\lnot q \rightarrow \lnot p$. De uttrykkene er helt ekvivalente.\\
     Det vil si å anta at $q = F$, og vise at da må også $p$ = F.\\
     
+    \pause
     \begin{block}{Vis at for $a, b \in \mathbb{Z}$, vil $a + b \geq 15$ medføre at $a \geq 8 \lor b \geq 8$.}
         La oss vise det motsatte: at om $a <8 \land b < 8$, er $a + b < 15$.\\
         Da er $a \leq 7$ og $b \leq 7$, og\\
@@ -751,6 +795,7 @@ Vi har mange teknikker for løse slike oppgaver. Problemet er at det ikke er opp
 \begin{frame}{Motsigelsesbevis (/proof by contradiction)}
     For å bevise en proposisjon $p$, kan det vi heller bevise at $\lnot p$ leder til en motsigelse. Det vil si, motbevis det motsatte.
     
+    \pause
     \begin{block}{Vis at summen av et rasjonalt tall $\frac{a}{b}$ og et irrasjonalt tall $c$ også er et irrasjonalt tall.}
     Vi antar det motsatte: at summen blir et rasjonalt tall: $\frac{a}{b}$ + $c$ = $\frac{e}{d}$ for $e, d \in \mathbb{Z}$.\\
     $\implies \frac{e}{d} - \frac{a}{b} = c$\\
@@ -764,6 +809,7 @@ Vi har mange teknikker for løse slike oppgaver. Problemet er at det ikke er opp
 \begin{frame}{Uttømmende bevis (/proof by exhaustion)}
     Noen ganger orker vi ikke finne på et elegant bevis. Da tar vi heller for oss hvert enkelt tilfelle hver for seg, og når vi har vist at det holder for alle tilfeller har vi bevist påstanden. \\
     
+    \pause
     \begin{block}{Vis at alle sommer-OL har blitt arrangert i årstall delelige på 4.}
         1896 mod 4 = 0 \checkmark \\
         1900 mod 4 = 0 \checkmark \\
@@ -778,7 +824,9 @@ Vi har mange teknikker for løse slike oppgaver. Problemet er at det ikke er opp
 \begin{frame}{Motbeviser}
     For å bevise at en påstand er usann, holder det vanligvis bare å finne et moteksempel. Dette er vanligvis den letteste typen bevis.
     
+    \pause
     \begin{block}{Påstand: det er ikke mulig å plassere 8 dronninger på et sjakkbrett uten at noen av dem truer hverandre.}
+    \pause
     \begin{figure}
         \centering
         \includegraphics[scale=0.20]{8 queens.png}
@@ -787,10 +835,6 @@ Vi har mange teknikker for løse slike oppgaver. Problemet er at det ikke er opp
     \end{figure}
     
     \end{block}
-\end{frame}
-
-\begin{frame}{Et notasjonsmellomspill}
-    $\sum_{i=1}^n, \sum_{i \in I}$
 \end{frame}
 
 \subsection{Induksjon}
@@ -812,7 +856,7 @@ Vi har mange teknikker for løse slike oppgaver. Problemet er at det ikke er opp
 
 \begin{frame}{Eksempel på matematisk induksjon}
     Vis at $\sum_{i=0}^{n} i = \frac{n(n+1)}{2}$.\\
-    
+\pause    
     Vi lar $P(x) := \sum_{i=0}^{x} i = \frac{x(x+1)}{2}$\\
     Vi begynner med base case, at påstanden holder for $P(0)$.\\
     $P(0): \sum_{i=0}^{0} i = \frac{0(0+1)}{2} = 0$ \checkmark\\
@@ -827,7 +871,7 @@ Vi har mange teknikker for løse slike oppgaver. Problemet er at det ikke er opp
     
     Vi erstatter $0 + 1 + 2 + .... + k$ med induksjonshypotesen:\\
     $\implies \frac{k(k+1)}{2} + k + 1 = \frac{(k+1)(k+2)}{2}$\\
-    $\frac{k^2 + 3k + 1}{2} = \frac{k^2+3k+2}{2}$ \checkmark
+    $\frac{k^2 + 3k + 2}{2} = \frac{k^2+3k+2}{2}$ \checkmark
 \end{frame}
 
 \begin{frame}{Sterk induksjon}
@@ -837,25 +881,75 @@ Vi har mange teknikker for løse slike oppgaver. Problemet er at det ikke er opp
 
 \begin{frame}{Rekursive funksjoner}
     En rekursiv funksjoner er en funksjon som refererer til seg selv i definisjonen.\\
+    \pause
     \begin{block}
         $fac(0) := 1$\\
         $fac(n) := n * fac(n-1)$\\\\
         
+        \pause
         $fac(3) = 3 * fac(2)$\\
         $= 3 * 2 * fac(1)$\\
         $= 3 * 2 * 1 * fac(0)$\\
-        $= 3 * 2 * 1 * 0$\\
-        $= 0$
+        $= 3 * 2 * 1 * 1$\\
+        $= 6$
     \end{block}
 \end{frame}
 
-\begin{frame}{Rekursive definisjoner}
-    
+\begin{frame}{Evaluering av en rekursiv funksjon}
+    $fib(0) = 0$\\
+    $fib(1) = 1$\\
+    $fib(n) = fib(n-1) + fib(n-2)$\\
+    \pause
+    $fib(5) = fib(3) + fib(4)$\\
+    $ = [fib(1) + fib(2)] + [fib(3) + fib(2)]$\\
+    $ = [1 + fib(0) + fib(1)] + [fib(2) + fib(1) + fib(1) + fib(0)]$\\
+    $ = [1 + 0 + 1] + [fib(1) + fib(0) + 1 + 1 + 0]$\\
+    $ = [1 + 0 + 1] + [1 + 0 + 1 + 1 + 0]$
+    $ = 5$
 \end{frame}
 
-\subsection{Relasjoner}
-\begin{frame}
-TODO: Fill with content @Steinar 
+\begin{frame}{Rekursive definisjoner}
+    Som med funksjoner kan vi også definere andre strukturer rekursivt. Med andre strukturer mener vi sett 90\% av tiden.\\
+    
+    De defineres med et basissteg, dvs utgangspunktet, og et rekursivt steg for å utvide det.\\
+    
+    \pause
+    \begin{block}{Eksempel}
+        Basissteg: $10 \in \mathbb{S}$.\\
+        Rekursivt steg: $a \in \mathbb{S} \rightarrow 10a \in \mathbb{S}$\\
+        $\mathbb{S} = \{10, 100, 1000, 10000, ....\}$
+    \end{block}
+\end{frame}
+
+\begin{frame}{Strukturell induksjon}
+    Ofte vil vi bevise egenskaper for rekursive strukturer.\\
+    Det gjøres ved to steg:\\
+    \begin{itemize}
+        \item Basissteget: vis at egenskap holder for strukturens basissteg.
+        \item Det rekursive steget: vis at om en egenskap allerede holder for en struktur, vil en runde med rekursjon opprettholde den egenskapen.
+    \end{itemize}
+    
+    \pause
+    \begin{block}{Vis at alle tall i $\mathbb{S}$ er delelige på 10.}
+        Basisteget: $\mathbb{S}$ inneholder bare $10$, og $10$ mod $10$ = 0. \checkmark\\
+        Rekursive steget: vi antar at alle tall i $\mathbb{S}$ er delelige på 10. Da, for ethvert tall $a \in \mathbb{S}$, er $10a$ også delelig på 10. \checkmark
+    \end{block}
+\end{frame}
+
+\begin{frame}{Større eksempel på strukturell induksjon}
+    Basissteg: $(0, 0) \in \mathbb{T}$\\
+    Rekursivt steg: $(a, b) \in \mathbb{T} \rightarrow (a+1, b) \in \mathbb{T} \land (a+1, b+1) \in \mathbb{T}$.\\
+    
+    Oppgave: vis at $\forall a \forall b [(a, b) \in \mathbb{T} \rightarrow a \geq b]$.\\
+    
+    \pause
+    Basissteg: $(0, 0) \in \mathbb{T}$, og $0 \geq 0$. \checkmark\\
+    Rerkursivt steg: vi antar at $\forall a \forall b [(a, b) \in \mathbb{T} \rightarrow a \geq b]$. Hvert rekursive kall legger til to nye par, $(a+1, b)$ og $(a+1, b+1)$. Vi ser på dem hver for seg:
+    \begin{itemize}
+        \item Om $a \geq b$ er $a+1 \geq b$.
+        \item Om $a \geq b$ er $a+1 \geq b+1$. \checkmark
+    \end{itemize}
+    Dermed kan vi konkludere med at $\forall a \forall b [(a, b) \in \mathbb{T} \rightarrow a \geq b]$.
 \end{frame}
 
 \subsection*{Spørretid}
@@ -865,15 +959,5 @@ TODO: Fill with content @Steinar
         \includegraphics[height = 4.9cm]{images/guillaume7.jpg}
         \caption{Guillaume på Blåmanen}
         \label{fig:guillaume7a}
-    \end{figure}
-\end{frame}
-
-\subsection*{Spørretid}
-\begin{frame}{Spørsmål?}
-    \begin{figure}
-        \centering
-        \includegraphics[height = 4.9cm]{images/guillaume7.jpg}
-        \caption{Guillaume, vent, dette bildet hadde vi jo før?}
-        \label{fig:guillaume7b}
     \end{figure}
 \end{frame}

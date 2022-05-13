@@ -65,8 +65,8 @@ def rest(d, a):              # d = 17, a = 5
 \medskip
 
 $x \equiv 3\,(mod\, 5)$ $\rightarrow x=3$\\
-$(57\cdot x^3)\, mod\,5=(57\, mod\, 5)\cdot (x\, mod\, 5)\cdot (x\, mod\, 5)\cdot (x\, mod\, 5)\, mod\, 5$\\
-$=(57\, mod\, 5)\cdot (3\, mod\, 5)\cdot (3\, mod\, 5)\cdot (3\, mod\, 5)\, mod\, 5$\\
+$(57\cdot x^3)\, mod\,5=((57\, mod\, 5)\cdot (x\, mod\, 5)\cdot (x\, mod\, 5)\cdot (x\, mod\, 5))\, mod\, 5$\\
+$=((57\, mod\, 5)\cdot (3\, mod\, 5)\cdot (3\, mod\, 5)\cdot (3\, mod\, 5))\, mod\, 5$\\
 $=(2\cdot 3\cdot 3\cdot 3)\, mod\, 5=54\, mod\, 5=4$
 \end{frame}
 
@@ -84,9 +84,9 @@ $=(2\cdot 3\cdot 3\cdot 3)\, mod\, 5=54\, mod\, 5=4$
 
 $x \equiv 3\,(mod\, 5)$ $\rightarrow x=3$\\
 $y \equiv 4\,(mod\, 5)$ $\rightarrow y=4$\\
-$(3\cdot x)\, mod\, 5 = (3\, mod\, 5)\cdot (x\, mod\, 5)\, mod\, 5=(3\, mod\, 5)\cdot (3\, mod\, 5)\, mod\, 5=9\, mod\, 5=4$\\
-$(2\cdot y^2)\, mod\, 5 = (2\, mod\, 5)\cdot (y\, mod\, 5)\cdot (y\, mod\, 5)\, mod\, 5 = (2\, mod\, 5)\cdot (4\, mod\, 5)\cdot (4\, mod\, 5)\, mod\, 5=(2\cdot 4\cdot 4)\, mod\, 5=32\, mod\, 5=2$\\
-$(3\cdot x+2\cdot y^2)\, mod\,5=((3\cdot x)\, mod\, 5+ (2\cdot y^2))\, mod\, 5=(4+2)\, mod\, 5=6\, mod\, 5=1$
+$(3\cdot x)\, mod\, 5 = ((3\, mod\, 5)\cdot (x\, mod\, 5))\, mod\, 5=((3\, mod\, 5)\cdot (3\, mod\, 5))\, mod\, 5=9\, mod\, 5=4$\\
+$(2\cdot y^2)\, mod\, 5 = ((2\, mod\, 5)\cdot (y\, mod\, 5)\cdot (y\, mod\, 5))\, mod\, 5 = ((2\, mod\, 5)\cdot (4\, mod\, 5)\cdot (4\, mod\, 5))\, mod\, 5=(2\cdot 4\cdot 4)\, mod\, 5=32\, mod\, 5=2$\\
+$(3\cdot x+2\cdot y^2)\, mod\,5=((3\cdot x)\, mod\, 5+ (2\cdot y^2)\, mod\, 5)\, mod\, 5=(4+2)\, mod\, 5=6\, mod\, 5=1$
 \end{frame}
 
 \subsection*{Tallsystem}
@@ -106,7 +106,7 @@ Navn & Tall & 5 & 11 & 34 \\ \hline
 Desimal (b=10) & 0-9 & 5& 11 & 34 \\
 Binær (b=2) & 0-1 & 101 & 1011 & 100010 \\
 Octal (b=8) & 0-7 & 5&  13 & 42\\
-Hexadesimal (b=16) & 0-9,a-f& 5& D& 22\\
+Hexadesimal (b=16) & 0-9,a-f& 5& B& 22\\
 base=13 & 0-9,a-c & 5& B& 28
 \end{tabular}
 \caption{Eksempler på forskjellige tallsystemer}
@@ -241,7 +241,7 @@ $gcd(a,b)=s\cdot a+t\cdot b$\\
 $gcd(12,28)=4=-2\cdot 12 + 1\cdot 28$\medskip
 
 Kan brukes for å finne multiplikativ inverse\\
-Multiplikativ inverse finnes dersom $g(a,b)=1$
+Multiplikativ inverse finnes dersom $gcd(a,b)=1$
 \end{block}
 \pause
 
@@ -316,7 +316,7 @@ a&b&gcd&x1&x2&x&y\\ \hline
 \begin{itemize}
 \item Det finnes bare \textit{én} nøkkel, som begge personer bruker
 \item Brukes for både kryptering og dekryptering
-\item Eksempel: Caesar – $f(c) = (c+key) \% mod 26$
+\item Eksempel: Caesar – $f(c) = (c+key)\, mod\, 26$
 \end{itemize}
 \end{block}
 \pause
