@@ -1,5 +1,5 @@
 # MNF130-Kraesjkurs
-Denne repositorien inneholder presentasjonen til MNF130-kræsjkurset 2022 inkluderende LaTeX-kildekode
+Denne repositorien inneholder presentasjonen til MNF130-kræsjkurset  ([``MNF130 Diskrete Strukturer``](https://www.uib.no/emne/MNF130)) 2022 inkluderende LaTeX-kildekode
 
 Selveste presentasjonen som PDF fil er [``Kraesjkurs_MNF130.pdf``](https://github.com/Dabendorf/MNF-Kraesjkurs/raw/master/Kraesjkurs_MNF130.pdf)
 
